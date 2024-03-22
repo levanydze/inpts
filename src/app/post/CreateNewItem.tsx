@@ -120,7 +120,7 @@ export default function CreateNewItem({
               ></Image>
               <div className="w-full flex flex-col justify-evenly">
                 <div className={` ${styles.textInputWrapper}`}>
-                  <p>Image Link</p>
+                  <p>Image Url</p>
                   <input
                     className="text-black m-1"
                     type="text"
@@ -236,18 +236,17 @@ export default function CreateNewItem({
             <button
               className=" mx-3 bg-green-700 py-2 px-4 my-4 rounded-md"
               type="submit"
-              onClick={() => setIsCreateModalOpen(false)}
             >
               SAVE NEW DATA
             </button>
             <button
-              className="mx-3 bg-red-700 py-2 px-4 my-4 rounded-md"
+              className="mx-3 border-2 border-teal-900 py-2 px-4 my-4 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
                 setIsCreateModalOpen(false);
               }}
             >
-              CANCEL
+              X
             </button>
           </div>
         </form>

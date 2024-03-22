@@ -41,7 +41,7 @@ export default function Post() {
   const [descriptionValue, setDescriptionValue] = useState<string>("");
   const [ingredientsValue, setIngredientsValue] = useState<string>("");
   const [portionsValue, setPortionsValue] = useState<string>("");
-  const [priceValue, setPriceValue] = useState<number>(0);
+  const [priceValue, setPriceValue] = useState<number>(NaN);
   const [specialValue, setSpecialValue] = useState<boolean>(false);
   const [seasonValue, setSeasonValue] = useState<boolean>(false);
   const [veganValue, setVeganValue] = useState<boolean>(false);
