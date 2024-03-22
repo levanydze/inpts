@@ -70,7 +70,7 @@ export default function CreateNewItem({
   setNewItemValue,
   setDisableValue,
 }: CreateNewItemProps) {
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(true);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(false);
   return (
     <div
       className={`${styles.animate} ${
@@ -236,6 +236,7 @@ export default function CreateNewItem({
             <button
               className=" mx-3 bg-green-700 py-2 px-4 my-4 rounded-md"
               type="submit"
+              onClick={() => setIsCreateModalOpen(false)}
             >
               SAVE NEW DATA
             </button>

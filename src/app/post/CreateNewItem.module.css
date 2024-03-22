@@ -68,7 +68,7 @@
 }
 .allInputWrapper {
   border: 2px solid rgb(7, 112, 72);
-  padding: 2%;
+  padding: 10px;
   width: 100%;
 }
 .imgTextNameWrap img {
@@ -133,8 +133,9 @@
     display: none;
   }
   .imgTextNameWrap img {
-    width: 100%;
-    height: 100%;
+    margin: 10px auto 0 auto;
+    /* width: 100%; */
+    /* height: 100%; */
     /* margin: 0 auto; */
   }
 }
@@ -148,7 +149,7 @@
   margin-top: 0px;
 }
 .hidden {
-  margin-top: -880px;
+  margin-top: -828px;
 }
 
 .hideAdd {
@@ -157,4 +158,33 @@
 
 .visibleAdd {
   scale: 1;
+}
+
+@media (max-width: 703px) {
+  .hidden {
+    margin-top: -880px;
+  }
+}
+
+@media (max-width: 500px) {
+  .hidden {
+    margin-top: -1030px;
+  }
+}
+
+@media (max-width: 459px) {
+  .hidden {
+    margin-top: -1083px;
+  }
+}
+@media (max-width: 440px) {
+  .hidden {
+    margin-top: -1115px;
+  }
+}
+
+@media (max-width: 376px) {
+  .hidden {
+    margin-top: -1190px;
+  }
 }
