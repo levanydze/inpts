@@ -13,15 +13,6 @@ import {
   update,
 } from "firebase/database";
 
-export const categories = [
-  { value: "breakfast", label: "Breakfast" },
-  { value: "dessert", label: "Dessert" },
-  { value: "lunch", label: "Lunch" },
-  { value: "dinner", label: "Dinner" },
-  { value: "drinks", label: "Drinks" },
-  { value: "special", label: "Special" },
-];
-
 export interface MenuItemProps {
   image: string;
   name: string;

@@ -1,7 +1,15 @@
 import React from "react";
-import { categories } from "./page";
+
 import styles from "./CreateNewItem.module.css";
 import Image from "next/image";
+const categories = [
+  { value: "breakfast", label: "Breakfast" },
+  { value: "dessert", label: "Dessert" },
+  { value: "lunch", label: "Lunch" },
+  { value: "dinner", label: "Dinner" },
+  { value: "drinks", label: "Drinks" },
+  { value: "special", label: "Special" },
+];
 
 interface CreateNewItemProps {
   saveData: (e: React.FormEvent<HTMLFormElement>) => Promise<void>; // Change the function signature

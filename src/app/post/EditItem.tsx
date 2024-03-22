@@ -2,8 +2,16 @@ import Image from "next/image";
 import styles from "./EditItem.module.css";
 import { MenuItemProps } from "./page";
 import Modal from "./Modal";
-import { categories } from "./page";
+
 import { useState } from "react";
+const categories = [
+  { value: "breakfast", label: "Breakfast" },
+  { value: "dessert", label: "Dessert" },
+  { value: "lunch", label: "Lunch" },
+  { value: "dinner", label: "Dinner" },
+  { value: "drinks", label: "Drinks" },
+  { value: "special", label: "Special" },
+];
 
 interface EditItemProps {
   fetchCategoryValue: string;
