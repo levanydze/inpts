@@ -124,6 +124,7 @@
   width: 25px;
   cursor: pointer;
 }
+
 @media (max-width: 500px) {
   .imgTextNameWrap {
     flex-direction: column;
