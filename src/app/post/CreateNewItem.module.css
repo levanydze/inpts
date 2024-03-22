@@ -138,3 +138,23 @@
     /* margin: 0 auto; */
   }
 }
+
+.animate {
+  transition: all 1s;
+}
+
+.visible {
+  opacity: 1;
+  margin-top: 0px;
+}
+.hidden {
+  margin-top: -880px;
+}
+
+.hideAdd {
+  scale: 0;
+}
+
+.visibleAdd {
+  scale: 1;
+}

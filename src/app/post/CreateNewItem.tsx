@@ -70,10 +70,14 @@ export default function CreateNewItem({
   setNewItemValue,
   setDisableValue,
 }: CreateNewItemProps) {
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(false);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(true);
   return (
-    <div>
-      {isCreateModalOpen ? (
+    <div
+      className={`${styles.animate} ${
+        isCreateModalOpen ? styles.visible : styles.hidden
+      }  `}
+    >
+      <div>
         <form
           onSubmit={saveData}
           className={`p-4 items-center flex flex-col border-4 border-teal-800 m-4 `}
@@ -213,24 +217,13 @@ export default function CreateNewItem({
                   onChange={(e) => setNewItemValue(e.target.checked)}
                 />
               </div>
-              {/* <div>
-              <p>Disabled?</p>
-              <input
-                type="checkbox"
-                checked={disableValue}
-                onChange={(e) => setDisableValue(e.target.checked)}
-              />
-            </div> */}
             </div>
             <div
               className={`flex px-4 py-2 rounded-md justify-evenly w-72 m-auto mt-6 ${
                 disableValue ? " text-gray-400 bg-red-900" : " bg-teal-600 "
               }`}
             >
-              <p>
-                {" "}
-                Product Is {disableValue ? "Disabeled Now" : "Enabled Now"}
-              </p>
+              <p>Product Is {disableValue ? "Disabeled Now" : "Enabled Now"}</p>
               <input
                 className="h-6 w-6 my-auto"
                 type="checkbox"
@@ -248,21 +241,25 @@ export default function CreateNewItem({
             </button>
             <button
               className="mx-3 bg-red-700 py-2 px-4 my-4 rounded-md"
-              onClick={() => setIsCreateModalOpen(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                setIsCreateModalOpen(false);
+              }}
             >
               CANCEL
             </button>
           </div>
         </form>
-      ) : (
         <div
-          className="border-2 border-teal-700 w-[200px] h-[200px] m-auto my-[50px] flex  flex-col  cursor-pointer text-green-600"
+          className={` ${styles.animate} ${
+            !isCreateModalOpen ? styles.visibleAdd : styles.hideAdd
+          } border-2 border-teal-700 w-[300px] h-[100px] m-auto  flex justify-center items-center   cursor-pointer text-green-600`}
           onClick={() => setIsCreateModalOpen(true)}
         >
-          <p className=" text-center text-[80px] ">+</p>
-          <p className=" text-center"> Add New Product</p>
+          <p className=" text-center text-[40px] pb-2 ">+</p>
+          <p className=" text-center pl-2 text-[20px]"> Add New Product</p>
         </div>
-      )}
+      </div>
     </div>
   );
 }
