@@ -267,7 +267,7 @@ export default function Post() {
     }
   }, [fetchCategoryValue]);
   return (
-    <>
+    <main>
       <CreateNewItem
         saveData={saveData}
         handleMenuCategoryChange={handleMenuCategoryChange}
@@ -332,6 +332,6 @@ export default function Post() {
         postEditing={postEditing}
         setPostEditing={setPostEditing}
       />
-    </>
+    </main>
   );
 }
