@@ -1,0 +1,139 @@
+.modalWrapper {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.imgTextNameWrap {
+  display: flex;
+}
+
+.selectCategoryInput {
+  display: flex;
+  border: 2px solid rgb(7, 112, 72);
+}
+.selectCategoryInput div {
+  height: 50px;
+  margin: 0 auto;
+}
+.selectCategoryInput h3 {
+  padding: 10px;
+  width: 120px;
+  max-width: 120px;
+  min-width: 120px;
+  border-right: 2px solid rgb(7, 112, 72);
+}
+.selectWrapper {
+  margin: 0 auto;
+  width: 400px;
+}
+.selectCategoryInput select {
+  font-size: 22px;
+  height: 50px;
+  background-color: black;
+  margin: 0 auto;
+  text-align: center;
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  /* -webkit-appearance: none; */
+  /* -moz-appearance: none; */
+  /* appearance: none; */
+  background-color: black;
+}
+
+.modalWrapper h3 {
+  width: 120px;
+  font-size: 35px;
+  margin: 0px auto;
+  text-transform: uppercase;
+}
+
+.modalWrapper form {
+  margin: 0 auto;
+  width: 95%;
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: center;
+}
+.buttonsWrapper button {
+  margin: 20px;
+}
+.allInputWrapper {
+  border: 2px solid rgb(7, 112, 72);
+  padding: 2%;
+  width: 100%;
+}
+.imgTextNameWrap img {
+  margin: 10px 10px 0 0;
+  height: 160px;
+  width: 160px;
+  object-fit: cover;
+  border: 2px solid rgb(7, 112, 72);
+}
+
+.textInputWrapper {
+  display: flex;
+  border: 2px solid rgb(7, 112, 72);
+  margin: 10px 0;
+}
+.textInputWrapper p {
+  margin: auto 0;
+  text-align: center;
+  width: 120px;
+  max-width: 120px;
+  min-width: 120px;
+}
+.textInputWrapper input {
+  outline: none;
+  padding: 10px;
+  border-left: 2px solid rgb(7, 112, 72);
+  background-color: black;
+  color: white;
+  width: 100%;
+}
+
+.checkBoxesWrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-height: 50px;
+  gap: 2px;
+}
+.checkBoxesWrapper div {
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border: solid 2px rgb(7, 112, 72);
+}
+
+.checkBoxesWrapper p {
+  padding-right: 7px;
+}
+.checkBoxesWrapper input {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+@media (max-width: 500px) {
+  .imgTextNameWrap {
+    flex-direction: column;
+  }
+  .selectCategoryInput h3 {
+    display: none;
+  }
+  .imgTextNameWrap img {
+    width: 100%;
+    height: 100%;
+    /* margin: 0 auto; */
+  }
+}

@@ -1,0 +1,75 @@
+.modalWrapper {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.97);
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+}
+.modalWrapper h3 {
+  font-size: 35px;
+  margin: 0px auto;
+  text-transform: uppercase;
+}
+
+.modalWrapper img {
+  margin: auto;
+  height: 130px;
+  width: 130px;
+  object-fit: cover;
+}
+
+.modalWrapper form {
+  margin: 0 auto;
+  width: 95%;
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: center;
+}
+.buttonsWrapper button {
+  margin: 20px;
+}
+.allInputWrapper {
+  border: 2px solid rgb(7, 112, 72);
+  padding: 1% 5%;
+}
+
+.textInputWrapper {
+  display: flex;
+  gap: 20px;
+  border: 2px solid rgb(7, 112, 72);
+  margin: 10px 0;
+}
+.textInputWrapper p {
+  margin: auto 0;
+  padding: 0 10px;
+  width: 120px;
+}
+.textInputWrapper input {
+  outline: none;
+  padding: 10px;
+  width: 100%;
+  border-left: 2px solid rgb(7, 112, 72);
+  background-color: black;
+  color: white;
+}
+
+.checkBoxesWrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+.checkBoxesWrapper div {
+  display: flex;
+  width: 100%;
+}
+.checkBoxesWrapper p {
+  padding-right: 7px;
+}
+.checkBoxesWrapper input {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
