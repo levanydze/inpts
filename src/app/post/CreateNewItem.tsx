@@ -20,7 +20,7 @@ interface CreateNewItemProps {
   descriptionValue: string;
   ingredientsValue: string;
   portionsValue: string;
-  priceValue: number;
+  priceValue: number | string;
   specialValue: boolean;
   seasonValue: boolean;
   veganValue: boolean;
@@ -32,7 +32,7 @@ interface CreateNewItemProps {
   setDescriptionValue: (value: string) => void;
   setIngredientsValue: (value: string) => void;
   setPortionsValue: (value: string) => void;
-  setPriceValue: (value: number) => void;
+  setPriceValue: (value: number | string) => void;
   setSpecialValue: (value: boolean) => void;
   setSeasonValue: (value: boolean) => void;
   setVeganValue: (value: boolean) => void;
@@ -116,7 +116,7 @@ export default function CreateNewItem({
                 }
                 width={400}
                 height={300}
-                alt="any"
+                alt="Error in Url"
               ></Image>
               <div className="w-full flex flex-col justify-evenly">
                 <div className={` ${styles.textInputWrapper}`}>
@@ -174,7 +174,6 @@ export default function CreateNewItem({
                 value={priceValue}
                 onChange={(e) => setPriceValue(parseFloat(e.target.value))}
               />
-              <p>sek</p>
             </div>
             <div className={styles.checkBoxesWrapper}>
               <div>

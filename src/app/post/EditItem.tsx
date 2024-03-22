@@ -150,7 +150,7 @@ export default function EditItem({
                       setDeleteAsk({ show: false, itemId: "", itemName: "" });
                     }}
                   >
-                    Yes
+                    Delete
                   </button>
                   <button
                     className="bg-green-700 px-4 py-2 rounded-md mx-2 w-24"
