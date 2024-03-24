@@ -184,12 +184,13 @@ export default function Post() {
 
     try {
       if (
-        !updateName ||
-        !updateImage ||
-        !updateDescription ||
-        !updateIngredients ||
-        !updatePortions ||
-        !updatePrice
+        // !updateName ||
+        !updateImage
+        //  ||
+        // !updateDescription ||
+        // !updateIngredients ||
+        // !updatePortions ||
+        // !updatePrice
       ) {
         alert("All fields must be filled");
         return;
