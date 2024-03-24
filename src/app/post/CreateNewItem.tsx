@@ -90,7 +90,7 @@ export default function CreateNewItem({
           <div className={styles.allInputWrapper}>
             <div className={styles.selectCategoryInput}>
               <h3>Category</h3>
-              <div className="selectWrapper">
+              <div className={styles.selectWrapper}>
                 <select
                   value={menuCategoryValue}
                   onChange={(e) => handleMenuCategoryChange(e.target.value)}

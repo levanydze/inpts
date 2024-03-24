@@ -28,8 +28,8 @@
   border-right: 2px solid rgb(7, 112, 72);
 }
 .selectWrapper {
-  margin: 0 auto;
-  width: 400px;
+  /* width: 400px; */
+  padding-right: 7%;
 }
 .selectCategoryInput select {
   font-size: 22px;

@@ -78,12 +78,13 @@ export default function Post() {
     try {
       if (
         !menuCategoryValue ||
-        !imageValue ||
-        !nameValue ||
-        !descriptionValue ||
-        !ingredientsValue ||
-        !portionsValue ||
-        !priceValue
+        !imageValue
+        //  ||
+        // !nameValue ||
+        // !descriptionValue ||
+        // !ingredientsValue ||
+        // !portionsValue ||
+        // !priceValue
       ) {
         alert("All fields must be filled");
         return;
