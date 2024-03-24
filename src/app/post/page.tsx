@@ -86,7 +86,8 @@ export default function Post() {
         // !portionsValue ||
         // !priceValue
       ) {
-        alert("All fields must be filled");
+        alert("Category and Img Url must be filled");
+
         return;
       }
 
@@ -192,7 +193,7 @@ export default function Post() {
         // !updatePortions ||
         // !updatePrice
       ) {
-        alert("All fields must be filled");
+        alert("Image Url must be filled");
         return;
       }
 
