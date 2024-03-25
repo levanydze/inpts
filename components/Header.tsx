@@ -22,9 +22,7 @@ export default function Header({ loggedIn }: HeaderProps) {
             width={100}
             alt={session?.data?.user?.name!}
           />
-          <p className="pl-2">
-            {session?.data?.user?.email} Levanydze@gmail.com
-          </p>
+          <p className="pl-2">{session?.data?.user?.email}</p>
         </div>
       ) : (
         <p className="button2">Your are not logged in</p>
