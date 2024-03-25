@@ -1,8 +1,8 @@
 import Image from "next/image";
 import styles from "./EditItem.module.css";
-import { MenuItemProps } from "./page";
+import { MenuItemProps } from "./Post";
 import Modal from "./Modal";
-import { SectionsProps } from "./page";
+import { SectionsProps } from "./Post";
 
 import { useState } from "react";
 const categories = [

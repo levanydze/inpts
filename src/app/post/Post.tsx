@@ -38,7 +38,6 @@ export interface MenuItemProps {
 export default function Post() {
   const [menuItems, setMenuItems] = useState<MenuItemProps[]>([]);
   const [sections, setSections] = useState<SectionsProps[]>([]);
-  const categories = Object.keys(sections);
 
   const [loading, setLoading] = useState(false);
   const [emptyCategory, setEmptyCategory] = useState<boolean>(false);

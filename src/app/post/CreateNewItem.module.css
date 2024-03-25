@@ -160,7 +160,13 @@
   scale: 1;
 }
 
-@media (max-width: 703px) {
+/* @media (max-width: 703px) {
+  .hidden {
+    margin-top: -880px;
+  }
+} */
+
+@media (max-width: 735px) {
   .hidden {
     margin-top: -880px;
   }

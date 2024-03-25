@@ -1,12 +1,9 @@
-"use client";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 export default function LogoutButton() {
-  const session = useSession();
   return (
-    <>
-      <div>{session?.data?.user?.name}</div>
-      <button onClick={() => signOut()}>Logout</button>
-    </>
+    <button className="button1" onClick={() => signOut()}>
+      Logout
+    </button>
   );
 }

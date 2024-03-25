@@ -1,9 +1,10 @@
+import "./globals.css";
 import { authOptions } from "../../pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
-import "./globals.css";
 import { Inter } from "next/font/google";
 import SessionProvider from "./SessionProvider";
-import Login from "../../components/Login";
+import Header from "../../components/Header";
+import NoData from "../../components/NoData";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,17 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SessionProvider session={session}>
-          {!session ? <Login /> : <div>{children}</div>}
+          {!session ? (
+            <>
+              <Header />
+              <NoData />
+            </>
+          ) : (
+            <>
+              <Header loggedIn />
+              {children}
+            </>
+          )}
         </SessionProvider>
       </body>
     </html>
