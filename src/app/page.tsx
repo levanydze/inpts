@@ -7,9 +7,6 @@ export default function Home() {
   return (
     <>
       <div>
-        <div className=" top-0 flex w-full justify-between px-4">
-          <Post />
-        </div>
         {session?.data?.user?.email === "artoflevanidze@gmail.com" ? (
           <Post />
         ) : session?.data?.user?.email === "levanydze@gmail.com" ? (
