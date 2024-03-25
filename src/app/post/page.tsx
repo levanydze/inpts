@@ -13,6 +13,12 @@ import {
   update,
 } from "firebase/database";
 
+export interface SectionsProps {
+  menuCategory: string;
+  section: string;
+  menu: string;
+}
+
 export interface MenuItemProps {
   image: string;
   name: string;
@@ -31,6 +37,9 @@ export interface MenuItemProps {
 
 export default function Post() {
   const [menuItems, setMenuItems] = useState<MenuItemProps[]>([]);
+  const [sections, setSections] = useState<SectionsProps[]>([]);
+  const categories = Object.keys(sections);
+
   const [loading, setLoading] = useState(false);
   const [emptyCategory, setEmptyCategory] = useState<boolean>(false);
   //Create new item states
@@ -157,6 +166,25 @@ export default function Post() {
     }
   };
 
+  const fetchCategoryData = async () => {
+    try {
+      setLoading(true);
+      const db = getDatabase(app);
+      const dbRef = ref(db);
+      const snapshot = await get(dbRef);
+
+      if (snapshot.exists()) {
+        setSections(Object.values(snapshot.val()) as SectionsProps[]);
+      } else {
+        console.log("No section data available");
+      }
+    } catch (error) {
+      console.error("Error section fetching data:", error);
+      alert("Error fetching section data");
+    } finally {
+      setLoading(false);
+    }
+  };
   const fetchData = async () => {
     try {
       setLoading(true);
@@ -258,6 +286,7 @@ export default function Post() {
   useEffect(() => {
     if (fetchCategoryValue) {
       fetchData();
+      fetchCategoryData();
     }
   }, [fetchCategoryValue]);
   return (
@@ -291,11 +320,13 @@ export default function Post() {
         disableValue={disableValue}
         setDisableValue={setDisableValue}
       />
+
       <EditItem
         fetchCategoryValue={fetchCategoryValue}
         handleFetchCategoryChange={handleFetchCategoryChange}
         emptyCategory={emptyCategory}
         menuItems={menuItems}
+        sections={sections}
         handleDeleteItem={handleDeleteItem}
         updateName={updateName}
         updateImage={updateImage}

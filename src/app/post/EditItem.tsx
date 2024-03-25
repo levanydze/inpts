@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./EditItem.module.css";
 import { MenuItemProps } from "./page";
 import Modal from "./Modal";
+import { SectionsProps } from "./page";
 
 import { useState } from "react";
 const categories = [
@@ -18,6 +19,7 @@ interface EditItemProps {
   handleFetchCategoryChange: (category: string) => void;
   emptyCategory: boolean;
   menuItems: MenuItemProps[];
+  sections: SectionsProps[];
   handleDeleteItem: (id: string) => void;
   updateName: string;
   updateImage: string;
@@ -68,6 +70,7 @@ export default function EditItem({
   handleFetchCategoryChange,
   emptyCategory,
   menuItems,
+  sections,
   handleDeleteItem,
   updateName,
   updateImage,
@@ -118,6 +121,7 @@ export default function EditItem({
 
             <ul className="flex justify-center ">
               <div className="flex flex-wrap justify-evenly ">
+                {/* mapping seactions titles but not according data! it is according to the  /////  const  categories = [{ value: "breakfast", label: "Breakfast" .... }, */}
                 {categories.map((category) => (
                   <li
                     key={category.value}
@@ -163,75 +167,96 @@ export default function EditItem({
                 </div>
               </div>
             ) : null}
-            {menuItems.map((item) => (
-              <div
-                key={item.id}
-                className={`m-8 relative border-[2px] rounded-md border-teal-700  ${styles.cardWrapper}`}
-              >
-                <div className="flex justify-between  absolute top-0 p-2 w-full">
-                  <button
-                    className="bg-red-600 px-4 py-2 rounded-md hover:bg-red-500"
-                    onClick={() =>
-                      setDeleteAsk({
-                        show: true,
-                        itemId: item.id,
-                        itemName: item.name,
-                      })
-                    }
-                  >
-                    Delete
-                  </button>
 
-                  <button
-                    className="   bg-teal-900 hover:bg-teal-600 px-4 py-2 rounded-md"
-                    onClick={() =>
-                      handleEditItem(
-                        item.id,
-                        item.name,
-                        item.image,
-                        item.description,
-                        item.ingredients,
-                        item.portions,
-                        item.price,
-                        item.special,
-                        item.season,
-                        item.vegan,
-                        item.spicy,
-                        item.newItem,
-                        item.disable
-                      )
-                    }
-                  >
-                    EDIT
-                  </button>
+            <div>
+              {/* mapping each seaction and can be used in restaurant menu and in section can be mapped each section children */}
+              {sections.map((section, index) => (
+                <div key={index} className="flex gap-2 uppercase">
+                  {Object.keys(section).map((sectionName, subIndex) =>
+                    sectionName === fetchCategoryValue ? (
+                      <h2
+                        className="px-4 py-2 mx-2 my-2   rounded-md cursor-pointer bg-teal-950 duration-200 "
+                        key={subIndex}
+                      >
+                        {sectionName}{" "}
+                      </h2>
+                    ) : null
+                  )}
                 </div>
-                <div className="absolute w-full bottom-1/2 ">
-                  {item.disable ? (
+              ))}
+            </div>
+            <div className="flex flex-wrap justify-center">
+              {/* mapping menu in each section */}
+              {menuItems.map((item) => (
+                <div
+                  key={item.id}
+                  className={`m-8 relative border-[2px] rounded-md border-teal-700  ${styles.cardWrapper}`}
+                >
+                  <div className="flex justify-between  absolute top-0 p-2 w-full">
                     <button
-                      className="bg-red-900 px-4 py-2  cursor-default w-full  h-12"
-                      onClick={(e) => {}}
+                      className="bg-red-600 px-4 py-2 rounded-md hover:bg-red-500"
+                      onClick={() =>
+                        setDeleteAsk({
+                          show: true,
+                          itemId: item.id,
+                          itemName: item.name,
+                        })
+                      }
                     >
-                      Disabeled
+                      Delete
                     </button>
-                  ) : null}
-                </div>
-                <Image
-                  src={item.image}
-                  width={600}
-                  height={600}
-                  alt={item.name}
-                />
-                <div className={styles.cardInfoDiv}>
-                  <div className={styles.namePrice}>
-                    <h1 className="title1 font1">{item.name}</h1>
-                    <p className={`${styles.dotted}`}></p>
-                  </div>
-                </div>
 
-                <div className="pb-40 w-full h-1"></div>
-                <div></div>
-              </div>
-            ))}
+                    <button
+                      className="   bg-teal-900 hover:bg-teal-600 px-4 py-2 rounded-md"
+                      onClick={() =>
+                        handleEditItem(
+                          item.id,
+                          item.name,
+                          item.image,
+                          item.description,
+                          item.ingredients,
+                          item.portions,
+                          item.price,
+                          item.special,
+                          item.season,
+                          item.vegan,
+                          item.spicy,
+                          item.newItem,
+                          item.disable
+                        )
+                      }
+                    >
+                      EDIT
+                    </button>
+                  </div>
+                  <div className="absolute w-full bottom-1/2 ">
+                    {item.disable ? (
+                      <button
+                        className="bg-red-900 px-4 py-2  cursor-default w-full  h-12"
+                        onClick={(e) => {}}
+                      >
+                        Disabeled
+                      </button>
+                    ) : null}
+                  </div>
+                  <Image
+                    src={item.image}
+                    width={600}
+                    height={600}
+                    alt={item.name}
+                  />
+                  <div className={styles.cardInfoDiv}>
+                    <div className={styles.namePrice}>
+                      <h1 className="title1 font1">{item.name}</h1>
+                      <p className={`${styles.dotted}`}></p>
+                    </div>
+                  </div>
+
+                  <div className="pb-40 w-full h-1"></div>
+                  <div></div>
+                </div>
+              ))}
+            </div>
           </div>
         ) : (
           <div>
