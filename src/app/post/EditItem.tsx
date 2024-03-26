@@ -27,13 +27,13 @@ interface EditItemProps {
   updateIngredients: string;
   updatePortions: string;
   updatePrice: number;
+  updatePriority: number;
   updateSpecial: boolean;
   updateSeason: boolean;
   updateVegan: boolean;
   updateSpicy: boolean;
   updateNewItem: boolean;
   updateDisable: boolean;
-  updatePriority: number;
   updateData: (e: React.FormEvent<HTMLFormElement>) => Promise<void>; // Change the function signature
   setUpdateImage: (value: string) => void;
   setUpdateName: (value: string) => void;
@@ -41,13 +41,13 @@ interface EditItemProps {
   setUpdateIngredients: (value: string) => void;
   setUpdatePortions: (value: string) => void;
   setUpdatePrice: (value: number) => void;
+  setUpdatePriority: (value: number) => void;
   setUpdateSpecial: (value: boolean) => void;
   setUpdateSeason: (value: boolean) => void;
   setUpdateVegan: (value: boolean) => void;
   setUpdateSpicy: (value: boolean) => void;
   setUpdateNewItem: (value: boolean) => void;
   setUpdateDisable: (value: boolean) => void;
-  setUpdatePriority: (value: number) => void;
   postEditing: boolean;
   setPostEditing: (value: boolean) => void;
   handleEditItem: (
@@ -58,13 +58,13 @@ interface EditItemProps {
     itemIngredients: string,
     itemPortions: string,
     itemPrice: number,
+    itemPriority: number,
     itemSpecial: boolean,
     itemSeason: boolean,
     itemVegan: boolean,
     itemSpicy: boolean,
     itemNewItem: boolean,
-    itemDisable: boolean,
-    itemPriority: number
+    itemDisable: boolean
   ) => void;
 }
 
@@ -81,13 +81,13 @@ export default function EditItem({
   updateIngredients,
   updatePortions,
   updatePrice,
+  updatePriority,
   updateSpecial,
   updateSeason,
   updateVegan,
   updateSpicy,
   updateNewItem,
   updateDisable,
-  updatePriority,
   updateData,
   setUpdateImage,
   setUpdateName,
@@ -95,13 +95,13 @@ export default function EditItem({
   setUpdateIngredients,
   setUpdatePortions,
   setUpdatePrice,
+  setUpdatePriority,
   setUpdateSpecial,
   setUpdateSeason,
   setUpdateVegan,
   setUpdateSpicy,
   setUpdateNewItem,
   setUpdateDisable,
-  setUpdatePriority,
   postEditing,
   setPostEditing,
   handleEditItem,
@@ -222,13 +222,13 @@ export default function EditItem({
                             item.ingredients,
                             item.portions,
                             item.price,
+                            item.priority,
                             item.special,
                             item.season,
                             item.vegan,
                             item.spicy,
                             item.newItem,
-                            item.disable,
-                            item.priority
+                            item.disable
                           )
                         }
                       >

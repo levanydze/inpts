@@ -50,13 +50,13 @@ export default function Post() {
   const [ingredientsValue, setIngredientsValue] = useState<string>("");
   const [portionsValue, setPortionsValue] = useState<string>("");
   const [priceValue, setPriceValue] = useState<number | string>("");
+  const [priorityValue, setPriorityValue] = useState<number>(99);
   const [specialValue, setSpecialValue] = useState<boolean>(false);
   const [seasonValue, setSeasonValue] = useState<boolean>(false);
   const [veganValue, setVeganValue] = useState<boolean>(false);
   const [spicyValue, setSpicyValue] = useState<boolean>(false);
   const [newItemValue, setNewItemValue] = useState<boolean>(false);
   const [disableValue, setDisableValue] = useState<boolean>(false);
-  const [priorityValue, setPriorityValue] = useState<number>(99);
 
   //edit item states
   const [updateName, setUpdateName] = useState<string>("");
@@ -65,13 +65,13 @@ export default function Post() {
   const [updateIngredients, setUpdateIngredients] = useState<string>("");
   const [updatePortions, setUpdatePortions] = useState<string>("");
   const [updatePrice, setUpdatePrice] = useState<number>(0);
+  const [updatePriority, setUpdatePriority] = useState<number>(99);
   const [updateSpecial, setUpdateSpecial] = useState<boolean>(false);
   const [updateSeason, setUpdateSeason] = useState<boolean>(false);
   const [updateVegan, setUpdateVegan] = useState<boolean>(false);
   const [updateSpicy, setUpdateSpicy] = useState<boolean>(false);
   const [updateNewItem, setUpdateNewItem] = useState<boolean>(false);
   const [updateDisable, setUpdateDisable] = useState<boolean>(false);
-  const [updatePriority, setUpdatePriority] = useState<number>(99);
   const [itemId, setItemId] = useState<string>("");
 
   const handleMenuCategoryChange = (category: string) => {
@@ -88,15 +88,16 @@ export default function Post() {
     try {
       if (
         !menuCategoryValue ||
-        !imageValue
+        !nameValue ||
+        !priorityValue
         //  ||
-        // !nameValue ||
+        // !imageValue ||
         // !descriptionValue ||
         // !ingredientsValue ||
         // !portionsValue ||
         // !priceValue
       ) {
-        alert("Category and Img Url must be filled");
+        alert("Category, Name and Priority must be filled");
 
         return;
       }
@@ -112,13 +113,13 @@ export default function Post() {
         ingredients: ingredientsValue,
         portions: portionsValue,
         price: priceValue,
+        priority: priorityValue,
         special: specialValue,
         season: seasonValue,
         vegan: veganValue,
         spicy: spicyValue,
         newItem: newItemValue,
         disable: disableValue,
-        priority: priorityValue,
 
         [menuCategoryValue]: true,
       });
@@ -133,13 +134,13 @@ export default function Post() {
       setIngredientsValue("");
       setPortionsValue("");
       setPriceValue(0);
+      setPriorityValue(99);
       setSpecialValue(false);
       setSeasonValue(false);
       setVeganValue(false);
       setSpicyValue(false);
       setNewItemValue(false);
       setDisableValue(false);
-      setPriceValue(99);
     } catch (error) {
       console.error("Error saving data:", error);
       alert("Error saving data");
@@ -226,14 +227,14 @@ export default function Post() {
     try {
       if (
         // !updateName ||
-        !updateImage
-        //  ||
+        !updateImage ||
+        !updatePriority
         // !updateDescription ||
         // !updateIngredients ||
         // !updatePortions ||
         // !updatePrice
       ) {
-        alert("Image Url must be filled");
+        alert("Name and Priority must be filled");
         return;
       }
 
@@ -279,13 +280,13 @@ export default function Post() {
     itemIngredients: string,
     itemPortions: string,
     itemPrice: number,
+    itemPriority: number,
     itemSpecial: boolean,
     itemSeason: boolean,
     itemVegan: boolean,
     itemSpicy: boolean,
     itemNewItem: boolean,
-    itemDisable: boolean,
-    itemPriority: number
+    itemDisable: boolean
   ) => {
     setItemId(itemId);
     setUpdateName(itemName);

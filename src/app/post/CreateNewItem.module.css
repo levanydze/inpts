@@ -149,7 +149,7 @@
   margin-top: 0px;
 }
 .hidden {
-  margin-top: -828px;
+  margin-top: -888px;
 }
 
 .hideAdd {
@@ -160,37 +160,31 @@
   scale: 1;
 }
 
-/* @media (max-width: 703px) {
-  .hidden {
-    margin-top: -880px;
-  }
-} */
-
 @media (max-width: 735px) {
   .hidden {
-    margin-top: -880px;
+    margin-top: -940px;
   }
 }
 
 @media (max-width: 500px) {
   .hidden {
-    margin-top: -1030px;
+    margin-top: -1090px;
   }
 }
 
 @media (max-width: 459px) {
   .hidden {
-    margin-top: -1083px;
+    margin-top: -1143px;
   }
 }
 @media (max-width: 440px) {
   .hidden {
-    margin-top: -1115px;
+    margin-top: -1175px;
   }
 }
 
 @media (max-width: 376px) {
   .hidden {
-    margin-top: -1190px;
+    margin-top: -1250px;
   }
 }

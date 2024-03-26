@@ -22,13 +22,13 @@ interface CreateNewItemProps {
   ingredientsValue: string;
   portionsValue: string;
   priceValue: number | string;
+  priorityValue: number | string;
   specialValue: boolean;
   seasonValue: boolean;
   veganValue: boolean;
   spicyValue: boolean;
   newItemValue: boolean;
   disableValue: boolean;
-  priorityValue: number;
   setImageValue: (value: string) => void;
   setNameValue: (value: string) => void;
   setDescriptionValue: (value: string) => void;
@@ -95,7 +95,7 @@ export default function CreateNewItem({
           <div className={styles.allInputWrapper}>
             <div className={styles.selectCategoryInput}>
               <h3>Category</h3>
-              <div className={styles.selectWrapper}>
+              <div className={`flex ${styles.selectWrapper}`}>
                 <select
                   value={menuCategoryValue}
                   onChange={(e) => handleMenuCategoryChange(e.target.value)}
@@ -109,6 +109,10 @@ export default function CreateNewItem({
                     </option>
                   ))}
                 </select>
+
+                {!menuCategoryValue ? (
+                  <span className="text-red-500 text-3xl h-4">*</span>
+                ) : null}
               </div>
             </div>
             <div className={styles.imgTextNameWrap}>
@@ -134,7 +138,12 @@ export default function CreateNewItem({
                   />
                 </div>
                 <div className={styles.textInputWrapper}>
-                  <p>Name</p>
+                  <p className="flex justify-between px-5">
+                    Name
+                    {!nameValue ? (
+                      <span className="text-red-500 text-3xl h-4">*</span>
+                    ) : null}
+                  </p>
                   <input
                     className="text-black m-1"
                     type="text"
@@ -180,6 +189,21 @@ export default function CreateNewItem({
                 onChange={(e) => setPriceValue(parseFloat(e.target.value))}
               />
             </div>
+            <div className={styles.textInputWrapper}>
+              <p className="flex justify-between px-4 ">
+                Priority
+                {!priorityValue ? (
+                  <span className="text-red-500 text-3xl h-4">*</span>
+                ) : null}
+              </p>
+              <input
+                type="number"
+                value={priorityValue}
+                placeholder="1 = First   (can be also 0,2 or 2,1 ...)  999... = Last "
+                onChange={(e) => setPriorityValue(parseFloat(e.target.value))}
+              />
+            </div>
+
             <div className={styles.checkBoxesWrapper}>
               <div>
                 <p>Special</p>
@@ -221,15 +245,6 @@ export default function CreateNewItem({
                   onChange={(e) => setNewItemValue(e.target.checked)}
                 />
               </div>
-              <div>
-                <p>Prio</p>
-                <input
-                  type="number"
-                  className="text-black"
-                  value={priorityValue}
-                  onChange={(e) => setPriorityValue(parseFloat(e.target.value))}
-                />
-              </div>
             </div>
             <div
               className={`flex px-4 py-2 rounded-md justify-evenly w-72 m-auto mt-6 ${
@@ -253,13 +268,13 @@ export default function CreateNewItem({
               SAVE NEW DATA
             </button>
             <button
-              className="mx-3 border-2 border-teal-900 py-2 px-4 my-4 rounded-md"
+              className="mx-3 border-2 border-teal-900 bg-red-700 py-2 px-4 my-4 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
                 setIsCreateModalOpen(false);
               }}
             >
-              X
+              CLOSE
             </button>
           </div>
         </form>

@@ -81,7 +81,12 @@ export default function Modal({
                 ></Image>
                 <div className="w-full ml-2">
                   <div className={styles.textInputWrapper}>
-                    <p>Name</p>
+                    <p className="flex justify-between  ">
+                      Name
+                      {!updateName ? (
+                        <span className="text-red-500 text-3xl h-4">*</span>
+                      ) : null}
+                    </p>
                     <input
                       type="text"
                       value={updateName}
@@ -137,11 +142,16 @@ export default function Modal({
                 />
               </div>
               <div className={styles.textInputWrapper}>
-                <p>Priority</p>
+                <p className="flex justify-between  ">
+                  Priority
+                  {!updatePriority ? (
+                    <span className="text-red-500 text-3xl h-4">*</span>
+                  ) : null}
+                </p>
                 <input
                   type="number"
                   value={updatePriority}
-                  placeholder="1 or 1.25 or 14,1 etc ..."
+                  placeholder="1 = First   (can be also 0,2 or 2,1 ...)  999 = Last "
                   onChange={(e) =>
                     setUpdatePriority(parseFloat(e.target.value))
                   } // Update the updatePrice state
