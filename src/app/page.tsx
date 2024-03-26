@@ -7,7 +7,11 @@ export default function Home() {
   const activeUser = session?.data?.user?.email ?? "";
 
   //list of companies
-  const chachaab = ["artoflevanidze@gmail.com", "levanydze@gmail.com"];
+  const chachaab = [
+    "artoflevanidze@gmail.com",
+    "levanydze@gmail.com",
+    "marilevanidze@gmail.com",
+  ];
 
   return (
     <div>
