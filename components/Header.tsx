@@ -17,10 +17,14 @@ export default function Header({ loggedIn }: HeaderProps) {
         <div className="button2 flex ">
           <Image
             className="profileImage"
-            src={session?.data?.user?.image!}
+            src={
+              !session
+                ? "https://github.com/levanydze/restaurant2024support/blob/main/icons/phone.png?raw=true"
+                : session?.data?.user?.image!
+            }
             height={100}
             width={100}
-            alt={session?.data?.user?.name!}
+            alt={!session ? "user" : session?.data?.user?.name!}
           />
           <p className="pl-2">{session?.data?.user?.email}</p>
         </div>

@@ -28,6 +28,7 @@ interface CreateNewItemProps {
   spicyValue: boolean;
   newItemValue: boolean;
   disableValue: boolean;
+  priorityValue: number;
   setImageValue: (value: string) => void;
   setNameValue: (value: string) => void;
   setDescriptionValue: (value: string) => void;
@@ -40,6 +41,7 @@ interface CreateNewItemProps {
   setSpicyValue: (value: boolean) => void;
   setNewItemValue: (value: boolean) => void;
   setDisableValue: (value: boolean) => void;
+  setPriorityValue: (value: number) => void;
 }
 
 export default function CreateNewItem({
@@ -58,6 +60,7 @@ export default function CreateNewItem({
   spicyValue,
   newItemValue,
   disableValue,
+  priorityValue,
   setImageValue,
   setNameValue,
   setDescriptionValue,
@@ -70,6 +73,7 @@ export default function CreateNewItem({
   setSpicyValue,
   setNewItemValue,
   setDisableValue,
+  setPriorityValue,
 }: CreateNewItemProps) {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(false);
   return (
@@ -215,6 +219,15 @@ export default function CreateNewItem({
                   type="checkbox"
                   checked={newItemValue}
                   onChange={(e) => setNewItemValue(e.target.checked)}
+                />
+              </div>
+              <div>
+                <p>Prio</p>
+                <input
+                  type="number"
+                  className="text-black"
+                  value={priorityValue}
+                  onChange={(e) => setPriorityValue(parseFloat(e.target.value))}
                 />
               </div>
             </div>

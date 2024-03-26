@@ -33,6 +33,7 @@ interface EditItemProps {
   updateSpicy: boolean;
   updateNewItem: boolean;
   updateDisable: boolean;
+  updatePriority: number;
   updateData: (e: React.FormEvent<HTMLFormElement>) => Promise<void>; // Change the function signature
   setUpdateImage: (value: string) => void;
   setUpdateName: (value: string) => void;
@@ -46,6 +47,7 @@ interface EditItemProps {
   setUpdateSpicy: (value: boolean) => void;
   setUpdateNewItem: (value: boolean) => void;
   setUpdateDisable: (value: boolean) => void;
+  setUpdatePriority: (value: number) => void;
   postEditing: boolean;
   setPostEditing: (value: boolean) => void;
   handleEditItem: (
@@ -61,7 +63,8 @@ interface EditItemProps {
     itemVegan: boolean,
     itemSpicy: boolean,
     itemNewItem: boolean,
-    itemDisable: boolean
+    itemDisable: boolean,
+    itemPriority: number
   ) => void;
 }
 
@@ -84,6 +87,7 @@ export default function EditItem({
   updateSpicy,
   updateNewItem,
   updateDisable,
+  updatePriority,
   updateData,
   setUpdateImage,
   setUpdateName,
@@ -97,6 +101,7 @@ export default function EditItem({
   setUpdateSpicy,
   setUpdateNewItem,
   setUpdateDisable,
+  setUpdatePriority,
   postEditing,
   setPostEditing,
   handleEditItem,
@@ -141,7 +146,7 @@ export default function EditItem({
         </div>
 
         {!emptyCategory ? (
-          <div className="flex flex-wrap justify-center">
+          <div>
             {deleteAsk.show ? (
               <div className=" h-full w-full bg-black opacity-95 z-20 flex flex-col justify-center fixed top-0 ">
                 <div className="m-auto">
@@ -171,91 +176,92 @@ export default function EditItem({
             <div>
               {/* mapping each seaction and can be used in restaurant menu and in section can be mapped each section children */}
               {sections.map((section, index) => (
-                <div key={index} className="flex gap-2 uppercase">
-                  {Object.keys(section).map((sectionName, subIndex) =>
-                    sectionName === fetchCategoryValue ? (
-                      <h2
-                        className="px-4 py-2 mx-2 my-2   rounded-md cursor-pointer bg-teal-950 duration-200 "
-                        key={subIndex}
-                      >
-                        {sectionName}{" "}
-                      </h2>
-                    ) : null
-                  )}
+                <div
+                  key={index}
+                  className="flex gap-2 uppercase justify-center"
+                >
+                  {fetchCategoryValue === section.menuCategory ? (
+                    <h2 className="px-4 py-2 mx-2 my-2   rounded-md cursor-pointer bg-teal-950 duration-200 ">
+                      {section.menuCategory}
+                    </h2>
+                  ) : null}
                 </div>
               ))}
             </div>
-            <div className="flex flex-wrap justify-center">
-              {/* mapping menu in each section */}
-              {menuItems.map((item) => (
-                <div
-                  key={item.id}
-                  className={`m-8 relative border-[2px] rounded-md border-teal-700  ${styles.cardWrapper}`}
-                >
-                  <div className="flex justify-between  absolute top-0 p-2 w-full">
-                    <button
-                      className="bg-red-600 px-4 py-2 rounded-md hover:bg-red-500"
-                      onClick={() =>
-                        setDeleteAsk({
-                          show: true,
-                          itemId: item.id,
-                          itemName: item.name,
-                        })
-                      }
-                    >
-                      Delete
-                    </button>
-
-                    <button
-                      className="   bg-teal-900 hover:bg-teal-600 px-4 py-2 rounded-md"
-                      onClick={() =>
-                        handleEditItem(
-                          item.id,
-                          item.name,
-                          item.image,
-                          item.description,
-                          item.ingredients,
-                          item.portions,
-                          item.price,
-                          item.special,
-                          item.season,
-                          item.vegan,
-                          item.spicy,
-                          item.newItem,
-                          item.disable
-                        )
-                      }
-                    >
-                      EDIT
-                    </button>
-                  </div>
-                  <div className="absolute w-full bottom-1/2 ">
-                    {item.disable ? (
+            <div>
+              <div className="flex flex-wrap justify-center">
+                {/* mapping menu in each section */}
+                {menuItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className={`m-8 relative border-[2px] rounded-md border-teal-700  ${styles.cardWrapper}`}
+                  >
+                    <div className="flex justify-between  absolute top-0 p-2 w-full">
                       <button
-                        className="bg-red-900 px-4 py-2  cursor-default w-full  h-12"
-                        onClick={(e) => {}}
+                        className="bg-red-600 px-4 py-2 rounded-md hover:bg-red-500"
+                        onClick={() =>
+                          setDeleteAsk({
+                            show: true,
+                            itemId: item.id,
+                            itemName: item.name,
+                          })
+                        }
                       >
-                        Disabeled
+                        Delete
                       </button>
-                    ) : null}
-                  </div>
-                  <Image
-                    src={item.image}
-                    width={600}
-                    height={600}
-                    alt={item.name}
-                  />
-                  <div className={styles.cardInfoDiv}>
-                    <div className={styles.namePrice}>
-                      <h1 className="title1 font1">{item.name}</h1>
-                      <p className={`${styles.dotted}`}></p>
-                    </div>
-                  </div>
+                      <p className="button1"> {item.priority}</p>
 
-                  <div className="pb-40 w-full h-1"></div>
-                  <div></div>
-                </div>
-              ))}
+                      <button
+                        className="   bg-teal-900 hover:bg-teal-600 px-4 py-2 rounded-md"
+                        onClick={() =>
+                          handleEditItem(
+                            item.id,
+                            item.name,
+                            item.image,
+                            item.description,
+                            item.ingredients,
+                            item.portions,
+                            item.price,
+                            item.special,
+                            item.season,
+                            item.vegan,
+                            item.spicy,
+                            item.newItem,
+                            item.disable,
+                            item.priority
+                          )
+                        }
+                      >
+                        EDIT
+                      </button>
+                    </div>
+                    <div className="absolute w-full bottom-1/2 ">
+                      {item.disable ? (
+                        <button
+                          className="bg-red-900 px-4 py-2  cursor-default w-full  h-12"
+                          onClick={(e) => {}}
+                        >
+                          Disabeled
+                        </button>
+                      ) : null}
+                    </div>
+                    <Image
+                      src={item.image}
+                      width={600}
+                      height={600}
+                      alt={item.name}
+                    />
+                    <div className={styles.cardInfoDiv}>
+                      <div className={styles.namePrice}>
+                        <h1 className="title1 font1">{item.name}</h1>
+                        <p className={`${styles.dotted}`}></p>
+                      </div>
+                    </div>
+
+                    <div className="pb-40 w-full h-1"></div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         ) : (
@@ -281,6 +287,7 @@ export default function EditItem({
         updateNewItem={updateNewItem}
         updateDisable={updateDisable}
         updateData={updateData}
+        updatePriority={updatePriority}
         setUpdateImage={setUpdateImage}
         setUpdateName={setUpdateName}
         setUpdateDescription={setUpdateDescription}
@@ -293,6 +300,7 @@ export default function EditItem({
         setUpdateSpicy={setUpdateSpicy}
         setUpdateNewItem={setUpdateNewItem}
         setUpdateDisable={setUpdateDisable}
+        setUpdatePriority={setUpdatePriority}
         postEditing={postEditing}
       />
     </div>

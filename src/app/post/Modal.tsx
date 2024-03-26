@@ -15,6 +15,7 @@ interface ModalProps {
   updateSpicy: boolean;
   updateNewItem: boolean;
   updateDisable: boolean;
+  updatePriority: number;
   updateData: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   setUpdateName: (value: string) => void;
   setUpdateImage: (value: string) => void;
@@ -29,6 +30,7 @@ interface ModalProps {
   setUpdateNewItem: (value: boolean) => void;
   setUpdateDisable: (value: boolean) => void;
   setPostEditing: (value: boolean) => void;
+  setUpdatePriority: (value: number) => void;
 }
 
 export default function Modal({
@@ -45,6 +47,7 @@ export default function Modal({
   updateSpicy,
   updateNewItem,
   updateDisable,
+  updatePriority,
   updateData,
   setUpdateName,
   setUpdateImage,
@@ -59,6 +62,7 @@ export default function Modal({
   setUpdateNewItem,
   setPostEditing,
   setUpdateDisable,
+  setUpdatePriority,
 }: ModalProps) {
   return (
     <div>
@@ -130,6 +134,17 @@ export default function Modal({
                   value={updatePrice}
                   placeholder="Update Price"
                   onChange={(e) => setUpdatePrice(parseFloat(e.target.value))} // Update the updatePrice state
+                />
+              </div>
+              <div className={styles.textInputWrapper}>
+                <p>Priority</p>
+                <input
+                  type="number"
+                  value={updatePriority}
+                  placeholder="1 or 1.25 or 14,1 etc ..."
+                  onChange={(e) =>
+                    setUpdatePriority(parseFloat(e.target.value))
+                  } // Update the updatePrice state
                 />
               </div>
               <div className={styles.checkBoxesWrapper}>

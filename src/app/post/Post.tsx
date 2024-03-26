@@ -15,8 +15,7 @@ import {
 
 export interface SectionsProps {
   menuCategory: string;
-  section: string;
-  menu: string;
+  menuItems: MenuItemProps[];
 }
 
 export interface MenuItemProps {
@@ -33,6 +32,7 @@ export interface MenuItemProps {
   spicy: boolean;
   newItem: boolean;
   disable: boolean;
+  priority: number;
 }
 
 export default function Post() {
@@ -56,6 +56,7 @@ export default function Post() {
   const [spicyValue, setSpicyValue] = useState<boolean>(false);
   const [newItemValue, setNewItemValue] = useState<boolean>(false);
   const [disableValue, setDisableValue] = useState<boolean>(false);
+  const [priorityValue, setPriorityValue] = useState<number>(99);
 
   //edit item states
   const [updateName, setUpdateName] = useState<string>("");
@@ -70,6 +71,7 @@ export default function Post() {
   const [updateSpicy, setUpdateSpicy] = useState<boolean>(false);
   const [updateNewItem, setUpdateNewItem] = useState<boolean>(false);
   const [updateDisable, setUpdateDisable] = useState<boolean>(false);
+  const [updatePriority, setUpdatePriority] = useState<number>(99);
   const [itemId, setItemId] = useState<string>("");
 
   const handleMenuCategoryChange = (category: string) => {
@@ -100,7 +102,7 @@ export default function Post() {
       }
 
       const db = getDatabase(app);
-      const newDocRef = push(ref(db, `menu/${menuCategoryValue}`));
+      const newDocRef = push(ref(db, `chachaab/menu/${menuCategoryValue}`));
 
       await set(newDocRef, {
         id: newDocRef.key,
@@ -116,6 +118,7 @@ export default function Post() {
         spicy: spicyValue,
         newItem: newItemValue,
         disable: disableValue,
+        priority: priorityValue,
 
         [menuCategoryValue]: true,
       });
@@ -136,6 +139,7 @@ export default function Post() {
       setSpicyValue(false);
       setNewItemValue(false);
       setDisableValue(false);
+      setPriceValue(99);
     } catch (error) {
       console.error("Error saving data:", error);
       alert("Error saving data");
@@ -144,7 +148,7 @@ export default function Post() {
   const handleDeleteItem = async (itemId: string) => {
     try {
       const db = getDatabase(app);
-      const itemRef = ref(db, `menu/${fetchCategoryValue}/${itemId}`);
+      const itemRef = ref(db, `chachaab/menu/${fetchCategoryValue}/${itemId}`);
 
       const itemSnapshot = await get(itemRef);
       if (!itemSnapshot.exists()) {
@@ -169,11 +173,18 @@ export default function Post() {
     try {
       setLoading(true);
       const db = getDatabase(app);
-      const dbRef = ref(db);
+      const dbRef = ref(db, "chachaab/menu");
       const snapshot = await get(dbRef);
 
       if (snapshot.exists()) {
-        setSections(Object.values(snapshot.val()) as SectionsProps[]);
+        const data = snapshot.val(); // Assuming snapshot.val() returns your data object
+        const sectionsData: SectionsProps[] = Object.keys(data).map(
+          (category) => ({
+            menuCategory: category,
+            menuItems: Object.values(data[category]) as MenuItemProps[],
+          })
+        );
+        setSections(sectionsData);
       } else {
         console.log("No section data available");
       }
@@ -188,11 +199,13 @@ export default function Post() {
     try {
       setLoading(true);
       const db = getDatabase(app);
-      const dbRef = ref(db, `menu/${fetchCategoryValue}`);
+      const dbRef = ref(db, `chachaab/menu/${fetchCategoryValue}`);
       const snapshot = await get(dbRef);
 
       if (snapshot.exists()) {
-        setMenuItems(Object.values(snapshot.val()) as MenuItemProps[]);
+        let menuItems = Object.values(snapshot.val()) as MenuItemProps[];
+        menuItems = menuItems.sort((a, b) => a.priority - b.priority); // Sort menu items based on priority
+        setMenuItems(menuItems);
         setEmptyCategory(false);
       } else {
         console.log("No data available");
@@ -226,18 +239,26 @@ export default function Post() {
 
       const db = getDatabase(app);
       const updates = {
-        [`menu/${fetchCategoryValue}/${itemId}/name`]: updateName,
-        [`menu/${fetchCategoryValue}/${itemId}/image`]: updateImage,
-        [`menu/${fetchCategoryValue}/${itemId}/description`]: updateDescription,
-        [`menu/${fetchCategoryValue}/${itemId}/ingredients`]: updateIngredients,
-        [`menu/${fetchCategoryValue}/${itemId}/portions`]: updatePortions,
-        [`menu/${fetchCategoryValue}/${itemId}/price`]: updatePrice,
-        [`menu/${fetchCategoryValue}/${itemId}/special`]: updateSpecial,
-        [`menu/${fetchCategoryValue}/${itemId}/season`]: updateSeason,
-        [`menu/${fetchCategoryValue}/${itemId}/vegan`]: updateVegan,
-        [`menu/${fetchCategoryValue}/${itemId}/spicy`]: updateSpicy,
-        [`menu/${fetchCategoryValue}/${itemId}/newItem`]: updateNewItem,
-        [`menu/${fetchCategoryValue}/${itemId}/disable`]: updateDisable,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/name`]: updateName,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/image`]: updateImage,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/description`]:
+          updateDescription,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/ingredients`]:
+          updateIngredients,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/portions`]:
+          updatePortions,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/price`]: updatePrice,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/special`]:
+          updateSpecial,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/season`]: updateSeason,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/vegan`]: updateVegan,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/spicy`]: updateSpicy,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/newItem`]:
+          updateNewItem,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/disable`]:
+          updateDisable,
+        [`chachaab/menu/${fetchCategoryValue}/${itemId}/priority`]:
+          updatePriority,
       };
 
       await update(ref(db), updates);
@@ -263,7 +284,8 @@ export default function Post() {
     itemVegan: boolean,
     itemSpicy: boolean,
     itemNewItem: boolean,
-    itemDisable: boolean
+    itemDisable: boolean,
+    itemPriority: number
   ) => {
     setItemId(itemId);
     setUpdateName(itemName);
@@ -278,6 +300,7 @@ export default function Post() {
     setUpdateSpicy(itemSpicy);
     setUpdateNewItem(itemNewItem);
     setUpdateDisable(itemDisable);
+    setUpdatePriority(itemPriority);
 
     setPostEditing(true);
   };
@@ -318,6 +341,8 @@ export default function Post() {
         setNewItemValue={setNewItemValue}
         disableValue={disableValue}
         setDisableValue={setDisableValue}
+        priorityValue={priorityValue}
+        setPriorityValue={setPriorityValue}
       />
 
       <EditItem
@@ -339,6 +364,7 @@ export default function Post() {
         updateSpicy={updateSpicy}
         updateNewItem={updateNewItem}
         updateDisable={updateDisable}
+        updatePriority={updatePriority}
         updateData={updateData}
         handleEditItem={handleEditItem}
         setUpdateImage={setUpdateImage}
@@ -355,6 +381,7 @@ export default function Post() {
         setUpdateDisable={setUpdateDisable}
         postEditing={postEditing}
         setPostEditing={setPostEditing}
+        setUpdatePriority={setUpdatePriority}
       />
     </main>
   );

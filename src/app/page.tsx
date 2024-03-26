@@ -4,14 +4,19 @@ import Post from "./post/Post";
 
 export default function Home() {
   const session = useSession();
+  const activeUser = session?.data?.user?.email ?? "";
+
+  //list of companies
+  const chachaab = ["artoflevanidze@gmail.com", "levanydze@gmail.com"];
+
   return (
     <div>
-      {session?.data?.user?.email === "artoflevanidze@gmail.com" ? (
+      {chachaab.includes(activeUser) ? (
         <Post />
-      ) : session?.data?.user?.email === "levanydze@gmail.com" ? (
-        <h1 className="text-white">sss</h1>
       ) : (
-        <h1 className="pt-40">There is no available data for you</h1>
+        <h1 className="pt-40 text-center text-2xl">
+          There is no available data for you
+        </h1>
       )}
     </div>
   );
