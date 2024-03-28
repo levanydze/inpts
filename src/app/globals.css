@@ -6,6 +6,28 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --spicy: purple;
+  --new: rgb(231, 65, 65);
+  --vegan: rgb(40, 186, 40);
+  --season: rgb(49, 145, 160);
+  --black: #000000;
+  --ash-black: #222;
+  --white: #fafafa;
+  --sky: #00ccff;
+  --green: #22dddd;
+  --blue: #1300ff;
+  --dusk: #6600ff;
+  --purple: #9900ff;
+  --pink: #ff0066;
+  --red: #fe0222;
+  --orange: #fd7702;
+  --yellow: #ffbb00;
+  --color1: teal; /*pripary bright color */
+  --color2: #002e5b; /* secondary dark color*/
+  --color3: red; /* not sure */
+  --textLight: rgb(255, 255, 255);
+  --textMedium: #737373;
+  --textDark: rgb(19, 19, 19);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +43,110 @@ body {
   color: white;
 }
 
+.menuTags {
+  /* restaurant menu tags like spicy or new or vegan.... needs to add bg color */
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: 500;
+  margin: auto 0;
+  color: var(--textLight);
+  line-height: 10px;
+}
+.textLight {
+  color: var(--textLight);
+}
+.textMedium {
+  color: var(--textMedium);
+}
+.textDark {
+  color: var(--textDark);
+}
+.color1 {
+  color: var(--color1);
+}
+.color2 {
+  color: var(--color2);
+}
+
+/* FONT Classes */
+
+.font1 {
+  font-family: var(--font1);
+}
+.font2 {
+  font-family: var(--font2);
+}
+.font3 {
+  font-family: var(--font3);
+}
+
+.text1 {
+  font-size: 15px;
+  font-family: var(--font1);
+  letter-spacing: 1px;
+}
+@media (max-width: 1000px) {
+  .text1 {
+    font-size: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .text1 {
+    font-size: 13px;
+  }
+}
+
+.title0 {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.title1 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.title2 {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.title3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.title4 {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.title5 {
+  font-size: 30px;
+  font-weight: 600;
+}
+.title6 {
+  font-size: 35px;
+  font-weight: 600;
+}
+.title7 {
+  font-size: 40px;
+  font-weight: 600;
+}
+.title8 {
+  font-size: 45px;
+  font-weight: 700;
+}
+.title9 {
+  font-size: 50px;
+  font-weight: 700;
+}
+.title10 {
+  font-size: 55px;
+  font-weight: 700;
+}
 .button1 {
   background-color: teal;
   border: solid 2px teal;

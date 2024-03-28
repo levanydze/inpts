@@ -245,16 +245,49 @@ export default function EditItem({
                         </button>
                       ) : null}
                     </div>
-                    <Image
-                      src={item.image}
-                      width={600}
-                      height={600}
-                      alt={item.name}
-                    />
-                    <div className={styles.cardInfoDiv}>
-                      <div className={styles.namePrice}>
-                        <h1 className="title1 font1">{item.name}</h1>
-                        <p className={`${styles.dotted}`}></p>
+
+                    <div className={styles.cardWrapper}>
+                      <Image
+                        src={item.image}
+                        width={600}
+                        height={600}
+                        alt={item.name}
+                      ></Image>
+                      <div className={styles.cardInfoDiv}>
+                        <div className={styles.namePrice}>
+                          <h1 className="title1 font1">{item.name}</h1>
+                          <p className={`${styles.dotted}`}></p>
+                          <h6>{item.price} sek</h6>
+                        </div>
+                        <h2 className="title0 font1 textMedium">
+                          {item.ingredients.length > 40
+                            ? item.ingredients.substring(0, 40) + "..."
+                            : item.ingredients}
+                        </h2>
+                        <div className={styles.details}>
+                          {item.portions && (
+                            <h5 className="title0 font1">{item.portions}</h5>
+                          )}
+                          {item.vegan && (
+                            <p className={`menuTags ${styles.vegan}`}>VEGAN</p>
+                          )}
+                          {item.special && (
+                            <p className={`menuTags ${styles.special}`}>
+                              SPECIAL
+                            </p>
+                          )}
+                          {item.season && (
+                            <p className={`menuTags ${styles.season}`}>
+                              SEASON
+                            </p>
+                          )}
+                          {item.spicy && (
+                            <p className={`menuTags ${styles.spicy}`}>SPICY</p>
+                          )}
+                          {item.newItem && (
+                            <p className={`menuTags ${styles.newItem}`}>NEW</p>
+                          )}
+                        </div>
                       </div>
                     </div>
 
