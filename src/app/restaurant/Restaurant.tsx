@@ -223,8 +223,8 @@ export default function Restaurant({
 
     try {
       if (
-        // !updateName ||
-        !updateImage ||
+        !updateName ||
+        // !updateImage ||
         !updatePriority
         // !updateDescription ||
         // !updateIngredients ||
