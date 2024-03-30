@@ -4,6 +4,7 @@ import EditItem from "./EditItem";
 import React, { useState, useEffect } from "react";
 import { app } from "../firebase";
 import { MenuItemProps } from "./types";
+import styles from "./css/Restaurant.module.css";
 import {
   getDatabase,
   ref,
@@ -21,9 +22,14 @@ export interface SectionsProps {
 type RestaurantProps = {
   company: string;
   categories: { value: string; label: string }[];
+  name: string;
 };
 
-export default function Restaurant({ company, categories }: RestaurantProps) {
+export default function Restaurant({
+  company,
+  categories,
+  name,
+}: RestaurantProps) {
   const [menuItems, setMenuItems] = useState<MenuItemProps[]>([]);
   const [sections, setSections] = useState<SectionsProps[]>([]);
 
@@ -306,7 +312,7 @@ export default function Restaurant({ company, categories }: RestaurantProps) {
   }, [fetchCategoryValue]);
   return (
     <main>
-      <h2 className=" text-center text-4xl uppercase">{company}</h2>
+      <h2 className={styles.companyName}>{name}</h2>
       <CreateNewItem
         categories={categories}
         saveData={saveData}

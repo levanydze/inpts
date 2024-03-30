@@ -149,7 +149,7 @@
   margin-top: 0px;
 }
 .hidden {
-  margin-top: -888px;
+  margin-top: -848px;
 }
 
 .hideAdd {
@@ -160,31 +160,31 @@
   scale: 1;
 }
 
-@media (max-width: 735px) {
+@media (max-width: 631px) {
   .hidden {
-    margin-top: -940px;
+    margin-top: -900px;
   }
 }
 
 @media (max-width: 500px) {
   .hidden {
-    margin-top: -1090px;
+    margin-top: -1050px;
   }
 }
 
-@media (max-width: 459px) {
+/* @media (max-width: 459px) {
   .hidden {
     margin-top: -1143px;
   }
-}
-@media (max-width: 440px) {
+} */
+@media (max-width: 388px) {
   .hidden {
-    margin-top: -1175px;
+    margin-top: -1105px;
   }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 380px) {
   .hidden {
-    margin-top: -1250px;
+    margin-top: -1100px;
   }
 }

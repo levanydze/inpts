@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./Modal.module.css";
+import styles from "./css/Modal.module.css";
 import { ModalProps } from "./types";
 
 export default function Modal({

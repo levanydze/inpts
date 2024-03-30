@@ -30,14 +30,6 @@
   --textDark: rgb(19, 19, 19);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
   background-color: black;
   color: white;

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { CreateNewItemProps } from "./types";
 
-import styles from "./CreateNewItem.module.css";
+import styles from "./css/CreateNewItem.module.css";
 import Image from "next/image";
 
 export default function CreateNewItem({

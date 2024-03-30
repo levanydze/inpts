@@ -12,9 +12,3 @@ export const otherabCategories = [
   { value: "sushi", label: "Sushi" },
   { value: "seafood", label: "Sea Food" },
 ];
-
-export const ninoCategories = [
-  { value: "shokoladidebi", label: "Chocolates" },
-  { value: "xili", label: "Fruits" },
-  { value: "comeuli", label: "Bakery" },
-];

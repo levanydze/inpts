@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import Restaurant from "./restaurant/Restaurant";
 import { restaurantClientData } from "./restaurant/clientsData";
 
-export default async function Home() {
+export default function Home() {
   const session = useSession();
   const activeUser = session?.data?.user?.email ?? "";
 
@@ -12,6 +12,7 @@ export default async function Home() {
       {restaurantClientData.map((client) =>
         client.email.includes(activeUser) ? (
           <Restaurant
+            name={client.name}
             key={client.company}
             company={client.company}
             categories={client.categories}

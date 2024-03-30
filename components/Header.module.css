@@ -1,0 +1,9 @@
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  width: 100%;
+  background-color: black;
+  z-index: 99;
+}

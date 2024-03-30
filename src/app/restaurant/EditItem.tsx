@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import styles from "./EditItem.module.css";
+import styles from "./css/EditItem.module.css";
 import Modal from "./Modal";
 import { EditItemProps } from "./types";
 import { useState } from "react";

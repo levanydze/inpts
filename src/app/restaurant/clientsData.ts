@@ -1,5 +1,5 @@
 // "use server";
-import { chachaabCategories, otherabCategories, ninoCategories } from "./menus";
+import { chachaabCategories, otherabCategories } from "./menus";
 
 export const restaurantClientData = [
   {
@@ -13,11 +13,5 @@ export const restaurantClientData = [
     company: "otherab",
     email: ["levanydze@gmail.com"],
     categories: otherabCategories,
-  },
-  {
-    name: "Ninachka AB",
-    company: "ninachkaab",
-    email: ["nini.lataria10@gmail.com"],
-    categories: ninoCategories,
   },
 ];
