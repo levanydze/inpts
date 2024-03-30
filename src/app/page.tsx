@@ -3,28 +3,27 @@ import { useSession } from "next-auth/react";
 import Restaurant from "./restaurant/Restaurant";
 import { restaurantClientData } from "./restaurant/clientsData";
 
-export default function Home() {
+export default async function Home() {
   const session = useSession();
   const activeUser = session?.data?.user?.email ?? "";
 
   return (
     <div>
-      {restaurantClientData.map((client) => {
-        if (client.email.includes(activeUser)) {
-          return (
-            <Restaurant
-              key={client.company}
-              company={client.company}
-              categories={client.categories}
-            />
-          );
-        }
-        return null;
-      })}
-      {!activeUser && (
-        <h1 className="pt-40 text-center text-2xl">
+      {restaurantClientData.map((client) =>
+        client.email.includes(activeUser) ? (
+          <Restaurant
+            key={client.company}
+            company={client.company}
+            categories={client.categories}
+          />
+        ) : null
+      )}
+      {!restaurantClientData.some((client) =>
+        client.email.includes(activeUser)
+      ) && (
+        <p className="pt-40 text-center text-2xl">
           There is no available data for you
-        </h1>
+        </p>
       )}
     </div>
   );

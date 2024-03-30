@@ -45,10 +45,7 @@ export default function CreateNewItem({
       }  `}
     >
       <div>
-        <form
-          onSubmit={saveData}
-          className={`p-4 items-center flex flex-col border-4 border-teal-800 m-4 `}
-        >
+        <form onSubmit={saveData} className={` items-center flex flex-col `}>
           <div className="m-2">
             <h2 className="text-white text-2xl mb-4 text-center">
               Create New List For Your Menu
@@ -89,7 +86,7 @@ export default function CreateNewItem({
                 height={300}
                 alt="Error in Url"
               ></Image>
-              <div className="w-full flex flex-col justify-evenly">
+              <div className="w-full flex flex-col justify-evenly ">
                 <div className={` ${styles.textInputWrapper}`}>
                   <p>Image Url</p>
                   <input
@@ -222,7 +219,7 @@ export default function CreateNewItem({
               />
             </div>
           </div>
-          <div>
+          <div className="mt-10">
             <button
               className=" mx-3 bg-green-700 py-2 px-4 my-4 rounded-md"
               type="submit"

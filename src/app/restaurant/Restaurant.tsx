@@ -306,6 +306,7 @@ export default function Restaurant({ company, categories }: RestaurantProps) {
   }, [fetchCategoryValue]);
   return (
     <main>
+      <h2 className=" text-center text-4xl uppercase">{company}</h2>
       <CreateNewItem
         categories={categories}
         saveData={saveData}
