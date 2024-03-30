@@ -3,6 +3,7 @@ import CreateNewItem from "./CreateNewItem";
 import EditItem from "./EditItem";
 import React, { useState, useEffect } from "react";
 import { app } from "../firebase";
+import { MenuItemProps } from "./types";
 import {
   getDatabase,
   ref,
@@ -17,25 +18,12 @@ export interface SectionsProps {
   menuCategory: string;
   menuItems: MenuItemProps[];
 }
+type RestaurantProps = {
+  company: string;
+  categories: { value: string; label: string }[];
+};
 
-export interface MenuItemProps {
-  image: string;
-  name: string;
-  id: string;
-  description: string;
-  ingredients: string;
-  portions: string;
-  price: number;
-  special: boolean;
-  season: boolean;
-  vegan: boolean;
-  spicy: boolean;
-  newItem: boolean;
-  disable: boolean;
-  priority: number;
-}
-
-export default function Post() {
+export default function Restaurant({ company, categories }: RestaurantProps) {
   const [menuItems, setMenuItems] = useState<MenuItemProps[]>([]);
   const [sections, setSections] = useState<SectionsProps[]>([]);
 
@@ -103,7 +91,7 @@ export default function Post() {
       }
 
       const db = getDatabase(app);
-      const newDocRef = push(ref(db, `chachaab/menu/${menuCategoryValue}`));
+      const newDocRef = push(ref(db, `${company}/menu/${menuCategoryValue}`));
 
       await set(newDocRef, {
         id: newDocRef.key,
@@ -149,7 +137,10 @@ export default function Post() {
   const handleDeleteItem = async (itemId: string) => {
     try {
       const db = getDatabase(app);
-      const itemRef = ref(db, `chachaab/menu/${fetchCategoryValue}/${itemId}`);
+      const itemRef = ref(
+        db,
+        `${company}/menu/${fetchCategoryValue}/${itemId}`
+      );
 
       const itemSnapshot = await get(itemRef);
       if (!itemSnapshot.exists()) {
@@ -174,7 +165,7 @@ export default function Post() {
     try {
       setLoading(true);
       const db = getDatabase(app);
-      const dbRef = ref(db, "chachaab/menu");
+      const dbRef = ref(db, `${company}/menu`);
       const snapshot = await get(dbRef);
 
       if (snapshot.exists()) {
@@ -200,7 +191,7 @@ export default function Post() {
     try {
       setLoading(true);
       const db = getDatabase(app);
-      const dbRef = ref(db, `chachaab/menu/${fetchCategoryValue}`);
+      const dbRef = ref(db, `${company}/menu/${fetchCategoryValue}`);
       const snapshot = await get(dbRef);
 
       if (snapshot.exists()) {
@@ -240,25 +231,26 @@ export default function Post() {
 
       const db = getDatabase(app);
       const updates = {
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/name`]: updateName,
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/image`]: updateImage,
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/description`]:
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/name`]: updateName,
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/image`]: updateImage,
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/description`]:
           updateDescription,
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/ingredients`]:
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/ingredients`]:
           updateIngredients,
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/portions`]:
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/portions`]:
           updatePortions,
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/price`]: updatePrice,
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/special`]:
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/price`]: updatePrice,
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/special`]:
           updateSpecial,
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/season`]: updateSeason,
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/vegan`]: updateVegan,
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/spicy`]: updateSpicy,
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/newItem`]:
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/season`]:
+          updateSeason,
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/vegan`]: updateVegan,
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/spicy`]: updateSpicy,
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/newItem`]:
           updateNewItem,
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/disable`]:
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/disable`]:
           updateDisable,
-        [`chachaab/menu/${fetchCategoryValue}/${itemId}/priority`]:
+        [`${company}/menu/${fetchCategoryValue}/${itemId}/priority`]:
           updatePriority,
       };
 
@@ -315,6 +307,7 @@ export default function Post() {
   return (
     <main>
       <CreateNewItem
+        categories={categories}
         saveData={saveData}
         handleMenuCategoryChange={handleMenuCategoryChange}
         menuCategoryValue={menuCategoryValue}
@@ -347,6 +340,7 @@ export default function Post() {
       />
 
       <EditItem
+        categories={categories}
         fetchCategoryValue={fetchCategoryValue}
         handleFetchCategoryChange={handleFetchCategoryChange}
         emptyCategory={emptyCategory}

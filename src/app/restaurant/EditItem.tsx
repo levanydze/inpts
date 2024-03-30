@@ -1,72 +1,9 @@
+"use client";
 import Image from "next/image";
 import styles from "./EditItem.module.css";
-import { MenuItemProps } from "./Post";
 import Modal from "./Modal";
-import { SectionsProps } from "./Post";
-
+import { EditItemProps } from "./types";
 import { useState } from "react";
-const categories = [
-  { value: "breakfast", label: "Breakfast" },
-  { value: "dessert", label: "Dessert" },
-  { value: "lunch", label: "Lunch" },
-  { value: "dinner", label: "Dinner" },
-  { value: "drinks", label: "Drinks" },
-  { value: "special", label: "Special" },
-];
-
-interface EditItemProps {
-  fetchCategoryValue: string;
-  handleFetchCategoryChange: (category: string) => void;
-  emptyCategory: boolean;
-  menuItems: MenuItemProps[];
-  sections: SectionsProps[];
-  handleDeleteItem: (id: string) => void;
-  updateName: string;
-  updateImage: string;
-  updateDescription: string;
-  updateIngredients: string;
-  updatePortions: string;
-  updatePrice: number;
-  updatePriority: number;
-  updateSpecial: boolean;
-  updateSeason: boolean;
-  updateVegan: boolean;
-  updateSpicy: boolean;
-  updateNewItem: boolean;
-  updateDisable: boolean;
-  updateData: (e: React.FormEvent<HTMLFormElement>) => Promise<void>; // Change the function signature
-  setUpdateImage: (value: string) => void;
-  setUpdateName: (value: string) => void;
-  setUpdateDescription: (value: string) => void;
-  setUpdateIngredients: (value: string) => void;
-  setUpdatePortions: (value: string) => void;
-  setUpdatePrice: (value: number) => void;
-  setUpdatePriority: (value: number) => void;
-  setUpdateSpecial: (value: boolean) => void;
-  setUpdateSeason: (value: boolean) => void;
-  setUpdateVegan: (value: boolean) => void;
-  setUpdateSpicy: (value: boolean) => void;
-  setUpdateNewItem: (value: boolean) => void;
-  setUpdateDisable: (value: boolean) => void;
-  postEditing: boolean;
-  setPostEditing: (value: boolean) => void;
-  handleEditItem: (
-    itemId: string,
-    itemName: string,
-    itemImage: string,
-    itemDescription: string,
-    itemIngredients: string,
-    itemPortions: string,
-    itemPrice: number,
-    itemPriority: number,
-    itemSpecial: boolean,
-    itemSeason: boolean,
-    itemVegan: boolean,
-    itemSpicy: boolean,
-    itemNewItem: boolean,
-    itemDisable: boolean
-  ) => void;
-}
 
 export default function EditItem({
   fetchCategoryValue,
@@ -105,7 +42,8 @@ export default function EditItem({
   postEditing,
   setPostEditing,
   handleEditItem,
-}: EditItemProps) {
+  categories, // categories as a prop
+}: EditItemProps & { categories: { value: string; label: string }[] }) {
   const [deleteAsk, setDeleteAsk] = useState<{
     show: boolean;
     itemId: string;

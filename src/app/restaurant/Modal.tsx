@@ -1,37 +1,6 @@
 import Image from "next/image";
 import styles from "./Modal.module.css";
-
-interface ModalProps {
-  postEditing: boolean;
-  updateName: string;
-  updateImage: string;
-  updateDescription: string;
-  updateIngredients: string;
-  updatePortions: string;
-  updatePrice: number;
-  updateSpecial: boolean;
-  updateSeason: boolean;
-  updateVegan: boolean;
-  updateSpicy: boolean;
-  updateNewItem: boolean;
-  updateDisable: boolean;
-  updatePriority: number;
-  updateData: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
-  setUpdateName: (value: string) => void;
-  setUpdateImage: (value: string) => void;
-  setUpdateDescription: (value: string) => void;
-  setUpdateIngredients: (value: string) => void;
-  setUpdatePortions: (value: string) => void;
-  setUpdatePrice: (value: number) => void;
-  setUpdateSpecial: (value: boolean) => void;
-  setUpdateSeason: (value: boolean) => void;
-  setUpdateVegan: (value: boolean) => void;
-  setUpdateSpicy: (value: boolean) => void;
-  setUpdateNewItem: (value: boolean) => void;
-  setUpdateDisable: (value: boolean) => void;
-  setPostEditing: (value: boolean) => void;
-  setUpdatePriority: (value: number) => void;
-}
+import { ModalProps } from "./types";
 
 export default function Modal({
   postEditing,

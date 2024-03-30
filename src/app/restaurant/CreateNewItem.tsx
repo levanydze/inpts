@@ -1,50 +1,12 @@
 "use client";
 import React, { useState } from "react";
+import { CreateNewItemProps } from "./types";
 
 import styles from "./CreateNewItem.module.css";
 import Image from "next/image";
-const categories = [
-  { value: "breakfast", label: "Breakfast" },
-  { value: "dessert", label: "Dessert" },
-  { value: "lunch", label: "Lunch" },
-  { value: "dinner", label: "Dinner" },
-  { value: "drinks", label: "Drinks" },
-  { value: "special", label: "Special" },
-];
-
-interface CreateNewItemProps {
-  saveData: (e: React.FormEvent<HTMLFormElement>) => Promise<void>; // Change the function signature
-  handleMenuCategoryChange: (category: string) => void;
-  menuCategoryValue: string;
-  imageValue: string;
-  nameValue: string;
-  descriptionValue: string;
-  ingredientsValue: string;
-  portionsValue: string;
-  priceValue: number | string;
-  priorityValue: number | string;
-  specialValue: boolean;
-  seasonValue: boolean;
-  veganValue: boolean;
-  spicyValue: boolean;
-  newItemValue: boolean;
-  disableValue: boolean;
-  setImageValue: (value: string) => void;
-  setNameValue: (value: string) => void;
-  setDescriptionValue: (value: string) => void;
-  setIngredientsValue: (value: string) => void;
-  setPortionsValue: (value: string) => void;
-  setPriceValue: (value: number | string) => void;
-  setSpecialValue: (value: boolean) => void;
-  setSeasonValue: (value: boolean) => void;
-  setVeganValue: (value: boolean) => void;
-  setSpicyValue: (value: boolean) => void;
-  setNewItemValue: (value: boolean) => void;
-  setDisableValue: (value: boolean) => void;
-  setPriorityValue: (value: number) => void;
-}
 
 export default function CreateNewItem({
+  categories,
   saveData,
   handleMenuCategoryChange,
   menuCategoryValue,
