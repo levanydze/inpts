@@ -43,7 +43,7 @@ export default function Home() {
       <div>
         {session ? (
           <Restaurant
-            name={"ChaCha AB"}
+            name="ChaCha AB"
             company="chachaab"
             categories={[
               { value: "breakfast", label: "Breakfast" },
