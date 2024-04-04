@@ -2,12 +2,12 @@
 
 let intervalId: NodeJS.Timeout | undefined; // Variable to hold the interval ID
 
-export async function getData() {
+export async function getClients() {
   try {
     // await new Promise((resolve) => setTimeout(resolve, 1000));
 
     const response = await fetch(
-      "https://raw.githubusercontent.com/levanydze/restaurant2024support/main/clients.json",
+      "https://raw.githubusercontent.com/levanydze/restaurant2024support/main/clients2.json",
       { cache: "no-store" }
     );
     // throw new Error("loading error");
@@ -18,7 +18,7 @@ export async function getData() {
     }
 
     // fetch menus every 100000 milliseconds (100 second)
-    intervalId = setInterval(getData, 100000);
+    intervalId = setInterval(getClients, 100000);
 
     return data;
   } catch (error) {

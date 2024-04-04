@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Restaurant from "./restaurant/Restaurant";
-import { getData } from "../../lib/cl";
+import { getClients } from "../../lib/cl";
 
 interface Category {
   value: string;
@@ -25,7 +25,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getData();
+        const data = await getClients();
         setClientData(data);
       } catch (error) {
         console.error("Error fetching client data:", error);
@@ -65,11 +65,12 @@ export default function Home() {
             />
           ) : null
         )}
-        {!clientData.some((client) => client.email.includes(activeUser)) && (
+        {/* {!clientData.some((client) => client.email.includes(activeUser)) && ( */}
+        {session ? (
           <p className="pt-40 text-center text-2xl">
             There is no available data for you
           </p>
-        )}
+        ) : null}
       </div>
     </>
   );
