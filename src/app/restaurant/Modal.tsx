@@ -190,13 +190,13 @@ export default function Modal({
             </div>
             <div className={styles.buttonsWrapper}>
               <button
-                className="bg-green-700 py-2 px-4 my-4 rounded-md"
+                className="bg-green-600 py-2 px-4 my-4 rounded-md hover:bg-green-700 transition-all"
                 type="submit"
               >
-                Save
+                Save Changes
               </button>
               <button
-                className="bg-red-700 py-2 px-4 my-4 rounded-md"
+                className="bg-red-600 py-2 px-4 my-4 rounded-md  hover:bg-red-700 transition-all"
                 onClick={() => setPostEditing(false)}
               >
                 Cancel

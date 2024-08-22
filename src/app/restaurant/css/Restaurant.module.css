@@ -1,8 +1,10 @@
 .companyName {
-  font-size: 40px;
+  font-size: 30px;
   background-color: black;
-  width: 100%;
+  margin: 0 auto;
+  min-width: 300px;
   text-align: center;
   position: relative;
   z-index: 999;
+  text-decoration: underline;
 }

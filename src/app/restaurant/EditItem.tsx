@@ -91,7 +91,7 @@ export default function EditItem({
                   <p className="text-center text-xl">Deleting</p>
                   <p className=" text-center my-3">{deleteAsk.itemName}</p>
                   <button
-                    className="bg-red-700 px-4 py-2 rounded-md mx-2 w-24"
+                    className="bg-red-600 px-4 py-2 rounded-md mx-2 w-24  hover:bg-red-700 transition-all"
                     onClick={() => {
                       handleDeleteItem(deleteAsk.itemId);
                       setDeleteAsk({ show: false, itemId: "", itemName: "" });
@@ -100,7 +100,7 @@ export default function EditItem({
                     Delete
                   </button>
                   <button
-                    className="bg-green-700 px-4 py-2 rounded-md mx-2 w-24"
+                    className="bg-green-600 px-4 py-2 rounded-md mx-2 w-24  hover:bg-green-700 transition-all"
                     onClick={() =>
                       setDeleteAsk({ show: false, itemId: "", itemName: "" })
                     }
@@ -136,7 +136,7 @@ export default function EditItem({
                   >
                     <div className="flex justify-between  absolute top-0 p-2 w-full">
                       <button
-                        className="bg-red-600 px-4 py-2 rounded-md hover:bg-red-500"
+                        className="bg-red-600 px-4 py-2 rounded-md hover:bg-red-700"
                         onClick={() =>
                           setDeleteAsk({
                             show: true,
