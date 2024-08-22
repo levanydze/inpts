@@ -42,9 +42,21 @@ export default function Home() {
   return (
     <>
       <div>
-        {session ? (
+        {clientData.some((client) => client.email.includes(activeUser)) ? (
+          clientData.map((client) =>
+            client.email.includes(activeUser) ? (
+              <Restaurant
+                key={client.company}
+                name={client.name}
+                company={client.company}
+                companyDomain={client.domain}
+                categories={client.categories.sort((a, b) => a.sort - b.sort)}
+              />
+            ) : null
+          )
+        ) : session ? (
           <Restaurant
-            name="ChaCha AB"
+            name="ChaCha Restaurant"
             company="chachaab"
             companyDomain="https://chacharestaurant.vercel.app"
             categories={[
@@ -57,17 +69,6 @@ export default function Home() {
             ]}
           />
         ) : null}
-        {clientData.map((client) =>
-          client.email.includes(activeUser) ? (
-            <Restaurant
-              name={client.name}
-              key={client.company}
-              company={client.company}
-              companyDomain={client.domain}
-              categories={client.categories.sort((a, b) => a.sort - b.sort)}
-            />
-          ) : null
-        )}
         {/* {!clientData.some((client) => client.email.includes(activeUser)) && ( */}
         {/* 
         {session ? (
