@@ -14,6 +14,7 @@ import {
   remove,
   update,
 } from "firebase/database";
+import Link from "next/link";
 
 export interface SectionsProps {
   menuCategory: string;
@@ -23,12 +24,14 @@ type RestaurantProps = {
   company: string;
   categories: { value: string; label: string }[];
   name: string;
+  companyDomain: string;
 };
 
 export default function Restaurant({
   company,
   categories,
   name,
+  companyDomain,
 }: RestaurantProps) {
   const [menuItems, setMenuItems] = useState<MenuItemProps[]>([]);
   const [sections, setSections] = useState<SectionsProps[]>([]);
@@ -312,7 +315,9 @@ export default function Restaurant({
   }, [fetchCategoryValue]);
   return (
     <main>
-      <h2 className={styles.companyName}>{name}</h2>
+      <Link href={companyDomain}>
+        <h2 className={styles.companyName}>{name}</h2>
+      </Link>
       <CreateNewItem
         categories={categories}
         saveData={saveData}

@@ -15,6 +15,7 @@ interface ClientData {
   company: string;
   email: string[];
   categories: Category[];
+  domain: string;
 }
 
 export default function Home() {
@@ -45,6 +46,7 @@ export default function Home() {
           <Restaurant
             name="ChaCha AB"
             company="chachaab"
+            companyDomain="https://chacharestaurant.vercel.app"
             categories={[
               { value: "breakfast", label: "Breakfast" },
               { value: "dessert", label: "Dessert" },
@@ -61,16 +63,19 @@ export default function Home() {
               name={client.name}
               key={client.company}
               company={client.company}
+              companyDomain={client.domain}
               categories={client.categories.sort((a, b) => a.sort - b.sort)}
             />
           ) : null
         )}
         {/* {!clientData.some((client) => client.email.includes(activeUser)) && ( */}
+        {/* 
         {session ? (
           <p className="pt-40 text-center text-2xl">
             There is no available data for you
           </p>
         ) : null}
+          */}
       </div>
     </>
   );

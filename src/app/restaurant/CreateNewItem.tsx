@@ -38,6 +38,10 @@ export default function CreateNewItem({
   setPriorityValue,
 }: CreateNewItemProps) {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(false);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    await saveData(e); // Pass the event to saveData
+    setIsCreateModalOpen(false); // Close the modal
+  };
   return (
     <div
       className={`${styles.animate} ${
@@ -45,7 +49,10 @@ export default function CreateNewItem({
       }  `}
     >
       <div>
-        <form onSubmit={saveData} className={` items-center flex flex-col `}>
+        <form
+          onSubmit={handleSubmit}
+          className={` items-center flex flex-col `}
+        >
           <div className="m-2">
             <h2 className="text-white text-2xl mb-4 text-center">
               Create New List For Your Menu
@@ -224,7 +231,7 @@ export default function CreateNewItem({
               className=" mx-3 bg-green-700 py-2 px-4 my-4 rounded-md"
               type="submit"
             >
-              SAVE NEW DATA
+              Add Item
             </button>
             <button
               className="mx-3 border-2 border-teal-900 bg-red-700 py-2 px-4 my-4 rounded-md"
@@ -233,7 +240,7 @@ export default function CreateNewItem({
                 setIsCreateModalOpen(false);
               }}
             >
-              CLOSE
+              Close
             </button>
           </div>
         </form>
