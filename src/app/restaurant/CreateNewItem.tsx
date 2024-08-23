@@ -39,8 +39,16 @@ export default function CreateNewItem({
 }: CreateNewItemProps) {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(false);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    await saveData(e); // Pass the event to saveData
-    setIsCreateModalOpen(false); // Close the modal
+    e.preventDefault(); // Prevent default form submission behavior
+
+    try {
+      await saveData(e); // Attempt to save data
+
+      // setIsCreateModalOpen(false); // Close the modal if no error was thrown
+    } catch (error) {
+      // Handle any errors that occurred during saveData
+      console.error("An error occurred while saving data:", error);
+    }
   };
   return (
     <div
