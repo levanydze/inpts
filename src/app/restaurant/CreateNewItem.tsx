@@ -49,8 +49,17 @@ export default function CreateNewItem({
   return (
     <div className={styles.headWrapper}>
       <form onSubmit={handleSubmit} className="items-center flex flex-col">
-        <div className={styles.allInputWrapper}>
+        <div className={` relative ${styles.allInputWrapper}`}>
           <h2 className="text-white text-2xl mb-4 text-center">Add New Item</h2>
+          <span
+            className="absolute top-4 right-4 text-2xl cursor-pointer p-2 hover:text-gray-500 transition-all"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsCreateModalOpen(false); // Assuming you have a state to close the modal
+            }}
+          >
+            X
+          </span>
           <div className={styles.selectCategoryInput}>
             <h3>Category</h3>
             <div className={`flex ${styles.selectWrapper}`}>

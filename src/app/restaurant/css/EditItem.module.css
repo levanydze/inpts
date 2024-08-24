@@ -55,21 +55,13 @@
 @media (max-width: 800px) {
   .cardWrapper {
     width: 300px;
-    height: 350px;
   }
   .cardWrapperAdd {
     width: 300px;
-    height: 350px;
   }
 }
 
 @media (max-width: 600px) {
-  .cardWrapper {
-    height: 350px;
-  }
-  .cardWrapperAdd {
-    height: 350px;
-  }
 }
 
 /* detail info styles */
