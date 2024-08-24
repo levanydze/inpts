@@ -1,0 +1,48 @@
+.lowerWrap {
+}
+.footerOverlay {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.heartName {
+  display: flex;
+}
+
+.lowerWrap p {
+  margin: 0 3px;
+  z-index: 10;
+}
+
+.heart {
+  color: var(--red);
+  margin: 3px 5px 0 5px;
+}
+.footerOverlay div {
+  margin: 0 1%;
+}
+.dimmed {
+  color: var(--textMedium);
+}
+.lighted {
+  color: var(--textLight);
+  z-index: 10;
+}
+
+.divider {
+  width: 5px;
+  height: 5px;
+  background-color: var(--textMedium);
+  border-radius: 50%;
+}
+
+@media (max-width: 650px) {
+  .footerOverlay {
+    flex-wrap: wrap;
+    padding: 0 40px;
+  }
+}

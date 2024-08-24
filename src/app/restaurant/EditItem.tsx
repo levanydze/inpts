@@ -4,6 +4,7 @@ import styles from "./css/EditItem.module.css";
 import Modal from "./Modal";
 import { EditItemProps } from "./types";
 import { useState } from "react";
+import CreateNewItem from "./CreateNewItem";
 
 export default function EditItem({
   fetchCategoryValue,
@@ -42,6 +43,37 @@ export default function EditItem({
   postEditing,
   setPostEditing,
   handleEditItem,
+  //add product
+  saveData,
+  handleMenuCategoryChange,
+  setMenuCategoryValue,
+  menuCategoryValue,
+  setImageValue,
+  imageValue,
+  setNameValue,
+  nameValue,
+  descriptionValue,
+  setDescriptionValue,
+  ingredientsValue,
+  setIngredientsValue,
+  portionsValue,
+  setPortionsValue,
+  priceValue,
+  setPriceValue,
+  specialValue,
+  setSpecialValue,
+  seasonValue,
+  setSeasonValue,
+  veganValue,
+  setVeganValue,
+  spicyValue,
+  setSpicyValue,
+  newItemValue,
+  setNewItemValue,
+  disableValue,
+  setDisableValue,
+  priorityValue,
+  setPriorityValue,
   categories, // categories as a prop
 }: EditItemProps & { categories: { value: string; label: string }[] }) {
   const [deleteAsk, setDeleteAsk] = useState<{
@@ -49,6 +81,11 @@ export default function EditItem({
     itemId: string;
     itemName: string;
   }>({ show: false, itemId: "", itemName: "" });
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState<boolean>(false);
+  const handleOpenCreateModal = () => {
+    setMenuCategoryValue(fetchCategoryValue); // Set the default category when the modal opens
+    setIsCreateModalOpen(true);
+  };
 
   return (
     <div>
@@ -58,9 +95,7 @@ export default function EditItem({
             <h1 className="text-4xl text-white text-center mt-8">
               Menu lists on your database
             </h1>
-            <h2 className="text-white text-2xl mb-4 text-center mt-6">
-              Choose a menu
-            </h2>
+            <h2 className="text-white text-2xl mb-4 text-center mt-6"></h2>
 
             <ul className="flex justify-center ">
               <div className="flex flex-wrap justify-evenly ">
@@ -119,15 +154,74 @@ export default function EditItem({
                   className="flex gap-2 uppercase justify-center"
                 >
                   {fetchCategoryValue === section.menuCategory ? (
-                    <h2 className="px-4 py-2 mx-2 my-2   rounded-md cursor-pointer bg-teal-950 duration-200 ">
-                      {section.menuCategory}
-                    </h2>
+                    <div className=" flex flex-col ">
+                      <h2 className="px-4 py-2 m-auto  my-2   rounded-md cursor-pointer bg-teal-950 duration-200  w-max ">
+                        {section.menuCategory}
+                      </h2>
+                      {isCreateModalOpen && (
+                        <div className=" bg-black bg-opacity-15  p-4 w-full  top-16 left-0 z-10">
+                          <CreateNewItem
+                            category={section.menuCategory}
+                            categories={categories}
+                            saveData={saveData}
+                            handleMenuCategoryChange={handleMenuCategoryChange}
+                            setMenuCategoryValue={setMenuCategoryValue}
+                            menuCategoryValue={menuCategoryValue}
+                            setImageValue={setImageValue}
+                            imageValue={imageValue}
+                            setNameValue={setNameValue}
+                            nameValue={nameValue}
+                            descriptionValue={descriptionValue}
+                            setDescriptionValue={setDescriptionValue}
+                            ingredientsValue={ingredientsValue}
+                            setIngredientsValue={setIngredientsValue}
+                            portionsValue={portionsValue}
+                            setPortionsValue={setPortionsValue}
+                            priceValue={priceValue}
+                            setPriceValue={setPriceValue}
+                            specialValue={specialValue}
+                            setSpecialValue={setSpecialValue}
+                            seasonValue={seasonValue}
+                            setSeasonValue={setSeasonValue}
+                            veganValue={veganValue}
+                            setVeganValue={setVeganValue}
+                            spicyValue={spicyValue}
+                            setSpicyValue={setSpicyValue}
+                            newItemValue={newItemValue}
+                            setNewItemValue={setNewItemValue}
+                            disableValue={disableValue}
+                            setDisableValue={setDisableValue}
+                            priorityValue={priorityValue}
+                            setPriorityValue={setPriorityValue}
+                            setIsCreateModalOpen={setIsCreateModalOpen}
+                          />
+                        </div>
+                      )}
+                    </div>
                   ) : null}
                 </div>
               ))}
             </div>
             <div>
               <div className="flex flex-wrap justify-center">
+                {/* /---------+ Add Menu----------/ */}
+                <div
+                  className={`m-8  border-[2px] rounded-md border-teal-700   ${styles.cardWrapperAdd}`}
+                >
+                  <div className="flex justify-between p-2 ">
+                    <div
+                      className=" rounded-md border-2  border-teal-700 w-[300px] m-5 h-auto flex justify-center items-center cursor-pointer text-green-600 hover:text-green-400  transition-all flex-col py-36"
+                      onClick={handleOpenCreateModal} // Updated function to open modal with correct category
+                    >
+                      <p className="text-center text-[40px] pb-2">+</p>
+                      <p className="text-center pl-2 text-[20px] capitalize">
+                        Add {fetchCategoryValue}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* /-------------------/ */}
+
                 {/* mapping menu in each section */}
                 {menuItems.map((item) => (
                   <div
@@ -236,10 +330,23 @@ export default function EditItem({
             </div>
           </div>
         ) : (
-          <div>
-            <h6 className="text-center text-white text-xl pt-10 mb-40 capitalize">
-              There is no data in {fetchCategoryValue} Menu
-            </h6>
+          <div className="flex flex-wrap justify-center">
+            {/* /---------+ Add Menu----------/ */}
+            <div
+              className={`m-8  border-[2px] rounded-md border-teal-700   ${styles.cardWrapperAdd}`}
+            >
+              <div className="flex justify-between p-2 ">
+                <div
+                  className=" rounded-md border-2  border-teal-700 w-[300px] m-5 h-auto flex justify-center items-center cursor-pointer text-green-600 hover:text-green-400  transition-all flex-col py-36"
+                  onClick={handleOpenCreateModal} // Updated function to open modal with correct category
+                >
+                  <p className="text-center text-[40px] pb-2">+</p>
+                  <p className="text-center pl-2 text-[20px] capitalize">
+                    Add {fetchCategoryValue}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>

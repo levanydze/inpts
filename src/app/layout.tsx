@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import SessionProvider from "./SessionProvider";
 import Header from "../../components/Header";
 import NoData from "../../components/NoData";
+import LowerFoot from "../../components/LowerFoot";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default async function RootLayout({
             </>
           )}
         </SessionProvider>
+        <LowerFoot />
       </body>
     </html>
   );

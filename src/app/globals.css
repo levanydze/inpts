@@ -23,15 +23,15 @@
   --orange: #fd7702;
   --yellow: #ffbb00;
   --color1: teal; /*pripary bright color */
-  --color2: #002e5b; /* secondary dark color*/
-  --color3: red; /* not sure */
+  --color2: rgb(8, 34, 31); /* secondary dark color*/
+  --color3: rgb(3, 22, 20);
   --textLight: rgb(255, 255, 255);
   --textMedium: #737373;
   --textDark: rgb(19, 19, 19);
 }
 
 body {
-  background-color: black;
+  background-color: var(--color2);
   color: white;
 }
 

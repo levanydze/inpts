@@ -39,8 +39,11 @@ export default function Restaurant({
   const [loading, setLoading] = useState(false);
   const [emptyCategory, setEmptyCategory] = useState<boolean>(false);
   //Create new item states
-  const [menuCategoryValue, setMenuCategoryValue] = useState("");
-  const [fetchCategoryValue, setFetchCategoryValue] = useState("breakfast");
+  const [menuCategoryValue, setMenuCategoryValue] = useState<string>("");
+  const [fetchCategoryValue, setFetchCategoryValue] = useState(
+    categories.length > 0 ? categories[0].value : ""
+  );
+
   const [imageValue, setImageValue] = useState("");
   const [nameValue, setNameValue] = useState("");
   const [descriptionValue, setDescriptionValue] = useState<string>("");
@@ -84,7 +87,6 @@ export default function Restaurant({
 
     try {
       if (
-        !menuCategoryValue ||
         !nameValue ||
         !priorityValue
         //  ||
@@ -94,7 +96,7 @@ export default function Restaurant({
         // !portionsValue ||
         // !priceValue
       ) {
-        alert("Category, Name and Priority must be filled");
+        alert("Name and Priority must be filled");
 
         return;
       }
@@ -118,13 +120,13 @@ export default function Restaurant({
         newItem: newItemValue,
         disable: disableValue,
 
-        [menuCategoryValue]: true,
+        // [menuCategoryValue]: true,
       });
       console.log("Data saved successfully");
       fetchData();
 
       // Reset form fields after saving
-      setMenuCategoryValue("");
+      // setMenuCategoryValue("");
       setImageValue("");
       setNameValue("");
       setDescriptionValue("");
@@ -315,11 +317,7 @@ export default function Restaurant({
   }, [fetchCategoryValue]);
   return (
     <main>
-      <Link href={companyDomain}>
-        <h2 className={styles.companyName}>{name}</h2>
-      </Link>
-      <CreateNewItem
-        categories={categories}
+      <EditItem
         saveData={saveData}
         handleMenuCategoryChange={handleMenuCategoryChange}
         menuCategoryValue={menuCategoryValue}
@@ -349,9 +347,6 @@ export default function Restaurant({
         setDisableValue={setDisableValue}
         priorityValue={priorityValue}
         setPriorityValue={setPriorityValue}
-      />
-
-      <EditItem
         categories={categories}
         fetchCategoryValue={fetchCategoryValue}
         handleFetchCategoryChange={handleFetchCategoryChange}
@@ -374,6 +369,7 @@ export default function Restaurant({
         updatePriority={updatePriority}
         updateData={updateData}
         handleEditItem={handleEditItem}
+        setMenuCategoryValue={setMenuCategoryValue}
         setUpdateImage={setUpdateImage}
         setUpdateName={setUpdateName}
         setUpdateDescription={setUpdateDescription}

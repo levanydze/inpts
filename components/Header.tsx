@@ -17,7 +17,7 @@ export default function Header({ loggedIn }: HeaderProps) {
 
   return (
     <div className={styles.headerWrapper}>
-      <Link href="/">
+      <Link href="https://levanidze.com" target="_blank">
         <Image
           className={styles.logo}
           src={logo}

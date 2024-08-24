@@ -37,6 +37,36 @@ export interface EditItemProps {
   setUpdateDisable: (value: boolean) => void;
   postEditing: boolean;
   setPostEditing: (value: boolean) => void;
+  saveData: (e: React.FormEvent<HTMLFormElement>) => Promise<void>; // Change the function signature
+  handleMenuCategoryChange: (category: string) => void;
+  menuCategoryValue: string;
+  imageValue: string;
+  nameValue: string;
+  descriptionValue: string;
+  ingredientsValue: string;
+  portionsValue: string;
+  priceValue: number | string;
+  priorityValue: number | string;
+  specialValue: boolean;
+  seasonValue: boolean;
+  veganValue: boolean;
+  spicyValue: boolean;
+  newItemValue: boolean;
+  disableValue: boolean;
+  setMenuCategoryValue: (value: string) => void;
+  setImageValue: (value: string) => void;
+  setNameValue: (value: string) => void;
+  setDescriptionValue: (value: string) => void;
+  setIngredientsValue: (value: string) => void;
+  setPortionsValue: (value: string) => void;
+  setPriceValue: (value: number | string) => void;
+  setSpecialValue: (value: boolean) => void;
+  setSeasonValue: (value: boolean) => void;
+  setVeganValue: (value: boolean) => void;
+  setSpicyValue: (value: boolean) => void;
+  setNewItemValue: (value: boolean) => void;
+  setDisableValue: (value: boolean) => void;
+  setPriorityValue: (value: number) => void;
   handleEditItem: (
     itemId: string,
     itemName: string,
@@ -56,6 +86,7 @@ export interface EditItemProps {
 }
 
 export interface CreateNewItemProps {
+  category: string;
   categories: { value: string; label: string }[];
   saveData: (e: React.FormEvent<HTMLFormElement>) => Promise<void>; // Change the function signature
   handleMenuCategoryChange: (category: string) => void;
@@ -73,6 +104,7 @@ export interface CreateNewItemProps {
   spicyValue: boolean;
   newItemValue: boolean;
   disableValue: boolean;
+  setMenuCategoryValue: (value: string) => void;
   setImageValue: (value: string) => void;
   setNameValue: (value: string) => void;
   setDescriptionValue: (value: string) => void;
@@ -86,6 +118,7 @@ export interface CreateNewItemProps {
   setNewItemValue: (value: boolean) => void;
   setDisableValue: (value: boolean) => void;
   setPriorityValue: (value: number) => void;
+  setIsCreateModalOpen: (value: boolean) => void;
 }
 
 export interface MenuItemProps {

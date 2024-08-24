@@ -1,3 +1,8 @@
+.cardWrapperAdd {
+  width: 350px;
+  height: 450px;
+  margin-bottom: 30px;
+}
 .cardWrapper {
   width: 350px;
   height: 450px;
@@ -41,6 +46,10 @@
     width: 300px;
     height: 450px;
   }
+  .cardWrapperAdd {
+    width: 300px;
+    height: 450px;
+  }
 }
 
 @media (max-width: 800px) {
@@ -48,10 +57,17 @@
     width: 300px;
     height: 350px;
   }
+  .cardWrapperAdd {
+    width: 300px;
+    height: 350px;
+  }
 }
 
 @media (max-width: 600px) {
   .cardWrapper {
+    height: 350px;
+  }
+  .cardWrapperAdd {
     height: 350px;
   }
 }
