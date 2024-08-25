@@ -196,9 +196,9 @@ export default function EditItem({
                 key={item.id}
                 className={`m-8 relative border-[2px] rounded-md border-teal-700 ${styles.cardWrapper}`}
               >
-                <div className="flex justify-between absolute top-0 p-2 w-full z-50">
+                <div className="flex justify-between absolute top-0 p-2 w-full ">
                   <button
-                    className="bg-red-600 px-4 py-2 rounded-md hover:bg-red-700 z-50"
+                    className="bg-red-600 px-4 py-2 rounded-md hover:bg-red-700 "
                     onClick={() =>
                       setDeleteAsk({
                         show: true,
